@@ -23,8 +23,25 @@ function App() {
               <div className="vector">
                   <img src={vector} alt="vector" />
               </div>
+          </div>
+          <div className="rightPanel">
+              <div className="sidePanelPick">
+                  <div className="myTasksButton">My Tasks</div>
+                  <div className="myRecordButton">My Records</div>
+              </div>
+              <div className="dateText">Today: October</div>
+              <div className="todayFocus">
+                  <div className="">
+                      <div className="recordText">Today, you have focused for</div>
+                      <div className="recordDetails"></div>
+                      <div className="recordTime"></div>
+                      <div className="frame">
+                          <div className="tomato"></div>
+                          <div className="multiplier"></div>
+                      </div>
 
-
+                  </div>
+              </div>
           </div>
       </div>
   );

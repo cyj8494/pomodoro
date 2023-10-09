@@ -1,53 +1,54 @@
 .body {
     position: relative;
-    width: 1728px;
-    height: 1117px;
-
+    width: 100vw;
+    height: 100vh;
     background: #FFFFFF;
 }
 
 /* Left panel */
 .leftPanel {
-    position: absolute;
-    width: 92px;
-    height: 1117px;
-    left: 0px;
-    top: 0px;
-
+    position: fixed;
+    width: 5.33vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
     background: #F2F2F2;
+}
+
+.profile img, .ranking img, .setting img, .vector img {
+    width: 100%;
+    height: 100%;
 }
 
 /* Profile icon */
 .profile {
     position: absolute;
-    width: 34.57px;
-    height: 38.41px;
-    left: 27px;
-    top: 43px;
-
-
+    width: 24.57px;
+    height: 28.41px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 3.85vh;
 }
 
 /* Group 25 */
 .vector {
     position: absolute;
-    width: 36px;
-    height: 36px;
-    left: 26px;
-    top: 1050px;
+    width: 24px;
+    height: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 6vh;
 }
 
 /* Settings icon */
 .setting {
     position: absolute;
-    width: 30.18px;
-    height: 30.03px;
-    left: 29px;
-    top: 910px;
-
-
+    width: 20.18px;
+    height: 20.03px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 78vh;
 }
-
 
 /* Ranking */
 .ranking {
@@ -56,18 +57,169 @@
     align-items: center;
     padding: 0px;
     gap: 15px;
-
     position: absolute;
-    width: 30px;
-    height: 30px;
-    left: 29px;
-    top: 831px;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 70vh;
 }
 
 /* Rank icon */
 .rank {
-    width: 30px;
-    height: 30px;
-
+    width: 20px;
+    height: 20px;
 }
 
+/* Right panel */
+.rightPanel {
+    position: absolute;
+    width: 25.7vw;
+    height: 100vh;
+    right: 0;
+    top: 0;
+    background: #F2F2F2;
+}
+
+/* Side panel pick */
+.sidePanelPick {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 1.5vw;
+    position: absolute;
+    width: 17.4vw;
+    height: 3.67vh;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 5.73vh;
+}
+
+/* My tasks button */
+.myTasksButton, .myRecordButton {
+    width: 7.94vw;
+    height: 3.67vh;
+    flex: none;
+    flex-grow: 0;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.79vh;
+    line-height: 1.79vh;
+    text-align: center;
+}
+
+.myTasksButton {
+    background: #E66C6C;
+    color: #FFFFFF;
+}
+
+.myRecordButton {
+    background: #FFFFFF;
+    color: #807A7A;
+    order: 1;
+}
+
+
+/* Today's focus */
+
+.dateText {
+    width: 204px;
+    height: 18px;
+    margin: 13.5vh auto 0;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    text-align: center;
+}
+
+/* Rectangle 4252 */
+.todayFocus {
+    width: 22.34vw;
+    height: 7.35vh;
+    margin-left: 1.68vw;
+    margin-top: 3vh;
+    background: #FFFFFF;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* Record */
+.record {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    gap: 0.87vh;
+    width: 19.74vw;
+    height: 5.17vh;
+    top: 1.17vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.recordText {
+    width: 17.52vw;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.34vh;
+    line-height: 1.61vh;
+    color: #D4B5B5;
+}
+
+.recordDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6.3vw;
+    width: 19.74vw;
+}
+
+.recordTime {
+    margin: 0 auto;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.15vh;
+    line-height: 2.69vh;
+    color: #E66C6C;
+}
+
+.frame {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.2vh;
+    width: 1.56vw;
+    height: 2.42vh;
+    position: relative;
+}
+
+.tomato {
+    width: 2vh;
+    height: 2vh;
+    background: url('./img/tomato.svg');
+}
+
+.multiplier {
+    position: absolute;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.16vh;
+    line-height: 1.43vh;
+    color: #000000;
+    right: 9.86vw;
+    top: 0.65vh;
+}
