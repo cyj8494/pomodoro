@@ -1,5 +1,7 @@
 .body {
     position: relative;
+    display: flex;
+    justify-content: space-between;
     width: 100vw;
     height: 100vh;
     background: #FFFFFF;
@@ -7,7 +9,7 @@
 
 /* Left panel */
 .leftPanel {
-    position: fixed;
+    position: relative;
     width: 5.33vw;
     height: 100vh;
     left: 0;
@@ -73,7 +75,7 @@
 
 /* Right panel */
 .rightPanel {
-    position: absolute;
+    position: relative;
     width: 25.7vw;
     height: 100vh;
     right: 0;
@@ -219,13 +221,146 @@
     white-space: nowrap;
 }
 
+.center-box {
+    display: flex;
+}
+
+/* Timer frame */
+.timer-frame {
+    position: relative;
+    width: 50vw;
+    height: 100%;
+}
+
+/* Mode */
+.mode {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2vw;
+    width: 50vw;
+    height: 7vh;
+    padding-top: 7vh;
+    padding-left: 6vw;
+}
+
+/* Pomodoro */
+.pomodoro {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    width: 11vw;
+    height: 6vh;
+    background: #E66C6C;
+    border-radius: 37.5px;
+
+    font-family: 'Outfit';
+    font-size: 2.5vh;
+    color: #FFFFFF;
+}
+
+/* Short break */
+.short-break {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    width: 11vw;
+    height: 6vh;
+    border: 0.3vh solid #F79393;
+    border-radius: 37.5px;
+
+    font-family: 'Outfit';
+    font-size: 2.5vh;
+    color: #F79393;
+}
+
+/* Long break */
+.long-break {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    width: 11vw;
+    height: 6vh;
+    border: 0.3vh solid #F79393;
+    border-radius: 37.5px;
+
+    font-family: 'Outfit';
+    font-size: 2.5vh;
+    color: #F79393;
+}
+
+
+/* Timer */
+.timer-container {
+    position: relative;
+    width: 236.25px;
+    height: 267.05px;
+    left: 50%;
+    top: 12vh;
+    transform: translateX(-50%);
+}
+
+/* countdown timer */
+.countdown-timer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    background: url('./img/Timer.png') no-repeat center center;
+    background-size: contain;
+}
+
+.timer-control-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0;
+    gap: 1vw;
+    position: absolute;
+    width: 20vw;
+    height: 7vh;
+    left: calc(50% - 10vw + 0.1vw);
+    top: 70vh;
+}
+
+.pause-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh 1vw;
+    background: #E66C6C;
+    border-radius: 18px;
+
+    width: 8vw;
+    height: 4vh;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3vh;
+    line-height: 4vh;
+    color: #FFFFFF;
+}
+
+
+
+
+
 /* Sound controls */
 .soundBar {
     position: relative; /* This makes it the reference point for absolute positioned child elements */
     width: 2vw;
     height: 38vh;
-    left: 69vw;
-    top: 5vh;
+    top : 5.5vh;
 }
 
 .music {

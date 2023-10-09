@@ -25,15 +25,35 @@ function App() {
               </div>
           </div>
 
-          <div className="soundBar">
-              <div className="music">
-                  <div className="musicBtn"></div>
-              </div>
-              <div className="alarm">
-                  <div className="alarmBtn"></div>
+          <div className="center-box">
+              <div className="timer-frame">
+                  <div className="mode">
+                      <div className="pomodoro">Pomodoro</div>
+                      <div className="short-break">Short Break</div>
+                      <div className="long-break">Long Break</div>
+                  </div>
+                  <div className="timer-container">
+                      <div className="countdown-timer">
+
+                      </div>
+                  </div>
+                  <div className="timer-control-buttons">
+                      <div className="pause-button">
+                          START
+                      </div>
+                  </div>
               </div>
 
           </div>
+              <div className="soundBar">
+                  <div className="music">
+                      <div className="musicBtn"></div>
+                  </div>
+                  <div className="alarm">
+                      <div className="alarmBtn"></div>
+                  </div>
+              </div>
+
 
           <div className="rightPanel">
               <div className="sidePanelPick">
