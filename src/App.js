@@ -26,6 +26,12 @@ function App() {
           </div>
 
           <div className="soundBar">
+              <div className="music">
+                  <div className="musicBtn"></div>
+              </div>
+              <div className="alarm">
+                  <div className="alarmBtn"></div>
+              </div>
 
           </div>
 
