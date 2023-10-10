@@ -4,6 +4,7 @@ import profile from './img/Profile icon.svg';
 import rank from './img/Rank icon.svg';
 import setting from './img/Settings icon.svg';
 import vector from './img/Group 25.svg';
+import SoundBar from './Soundbar';
 
 function App() {
   return (
@@ -42,19 +43,13 @@ function App() {
                           START
                       </div>
                   </div>
+                  <div className="currentTaskTxt">Current task</div>
+                  <div className="currentTask">
+                      <div className="currentCheck-image"></div>
+                  </div>
               </div>
-
           </div>
-              <div className="soundBar">
-                  <div className="music">
-                      <div className="musicBtn"></div>
-                  </div>
-                  <div className="alarm">
-                      <div className="alarmBtn"></div>
-                  </div>
-              </div>
-
-
+          <SoundBar />
           <div className="rightPanel">
               <div className="sidePanelPick">
                   <div className="myTasksButton">My Tasks</div>

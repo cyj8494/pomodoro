@@ -223,25 +223,25 @@
 
 .center-box {
     display: flex;
+    height: 100%;
 }
 
 /* Timer frame */
 .timer-frame {
     position: relative;
-    width: 50vw;
+    width: 1000px;
     height: 100%;
 }
 
-/* Mode */
 .mode {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 2vw;
-    width: 50vw;
-    height: 7vh;
-    padding-top: 7vh;
-    padding-left: 6vw;
+    gap: 20px; /* Adjusted from 2vw */
+    width: 700px; /* Example fixed width */
+    height: 45px; /* Adjusted from 7vh */
+    padding-top: 45px; /* Adjusted from 7vh */
+    padding-left: 160px; /* Adjusted from 6vw */
 }
 
 /* Pomodoro */
@@ -250,14 +250,15 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 2vw;
-    width: 11vw;
-    height: 6vh;
+    gap:15px;
+    width: 219px;
+    height: 55px;
     background: #E66C6C;
+
     border-radius: 37.5px;
 
     font-family: 'Outfit';
-    font-size: 2.5vh;
+    font-size: 26px;
     color: #FFFFFF;
 }
 
@@ -267,14 +268,14 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 2vw;
-    width: 11vw;
-    height: 6vh;
+    gap:15px;
+    width: 219px;
+    height: 55px;
     border: 0.3vh solid #F79393;
     border-radius: 37.5px;
 
     font-family: 'Outfit';
-    font-size: 2.5vh;
+    font-size: 26px;
     color: #F79393;
 }
 
@@ -284,14 +285,14 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 2vw;
-    width: 11vw;
-    height: 6vh;
+    gap:15px;
+    width: 219px;
+    height: 55px;
     border: 0.3vh solid #F79393;
     border-radius: 37.5px;
 
     font-family: 'Outfit';
-    font-size: 2.5vh;
+    font-size: 26px;
     color: #F79393;
 }
 
@@ -299,8 +300,8 @@
 /* Timer */
 .timer-container {
     position: relative;
-    width: 236.25px;
-    height: 267.05px;
+    width: 303px;
+    height: 343px;
     left: 50%;
     top: 12vh;
     transform: translateX(-50%);
@@ -329,7 +330,7 @@
     width: 20vw;
     height: 7vh;
     left: calc(50% - 10vw + 0.1vw);
-    top: 70vh;
+    top: 600px;
 }
 
 .pause-button {
@@ -337,20 +338,75 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 1vh 1vw;
-    background: #E66C6C;
+    padding: 7.5px;
     border-radius: 18px;
+    gap: 7.5px;
+    background: #E66C6C;
 
-    width: 8vw;
-    height: 4vh;
+    width: 178.5px;
+    height: 52.25px;
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 400;
-    font-size: 3vh;
+    font-size: 30px;
     line-height: 4vh;
     color: #FFFFFF;
 }
 
+/* Current Task */
+.currentTaskTxt {
+    position: absolute;
+    width: 136px;
+    height: 24px;
+    left: 62px;
+    top: 760px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+
+    color: #E66C6C;
+}
+
+.currentTask {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 95px;
+
+    position: absolute;
+    width: 960px;
+    height: 40px;
+    left: calc(50% - 960px/2);
+    top: 826px;
+}
+
+.currentCheck {
+    width: 40px;
+    height: 40px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.currentCheck-image {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 0px;
+    top: 0px;
+
+    background: #D4B5B5;
+    background-image: url('./img/check.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
 
 
 
@@ -359,7 +415,7 @@
 .soundBar {
     position: relative; /* This makes it the reference point for absolute positioned child elements */
     width: 2vw;
-    height: 38vh;
+    height: 350px;
     top : 5.5vh;
 }
 
@@ -390,8 +446,8 @@
     position: absolute;
     width: 100%;
     height: 4vh;
-    left: 10%; /* You can adjust this value based on where you want it inside the .soundBar */
-    top: 30%; /* You can adjust this value based on where you want it inside the .soundBar */
+    left: 10%;
+    top: 25%;
 }
 
 .alarmBtn {
@@ -407,4 +463,75 @@
     background-position: center;
     border-radius: 50%;
     transform: translate(-50%, -50%);
+}
+
+/* Volume container */
+.volumeContainer {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    left: 55%;
+    top: 60%;
+    bottom: 0;
+    transform: translate(-50%, -50%);
+}
+
+/* Rectangle 4253 */
+.volumeBar {
+    position: absolute;
+    width: 10px;
+    height: 152px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    background: #F2F2F2;
+    border-radius: 50px;
+}
+
+/* Rectangle 4254 */
+.volumeActive {
+    position: absolute;
+    width: 10px;
+    height: 66px;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    background: #E66C6C;
+    border-radius: 50px;
+}
+
+/* Ellipse 139 */
+.volumeThumb {
+    position: absolute;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    top: calc(100% - 66px - 10px);
+    transform: translateX(-50%);
+    background: #FFFFFF;
+    border: 3px solid #E66C6C;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volumeImg {
+    position: absolute;
+    width: 100%;
+    height: 4vh;
+    left: 10%;
+    bottom: 0;
+}
+
+.volumeBtn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url('./img/Volume.svg');
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: center;
 }
