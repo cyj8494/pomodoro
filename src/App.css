@@ -241,7 +241,7 @@
     width: 700px; /* Example fixed width */
     height: 45px; /* Adjusted from 7vh */
     padding-top: 45px; /* Adjusted from 7vh */
-    padding-left: 160px; /* Adjusted from 6vw */
+    padding-left: 150px; /* Adjusted from 6vw */
 }
 
 /* Pomodoro */
@@ -376,8 +376,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0px;
-    gap: 95px;
-
+    gap: 5px;
     position: absolute;
     width: 960px;
     height: 40px;
@@ -385,31 +384,58 @@
     top: 826px;
 }
 
-.currentCheck {
-    width: 40px;
-    height: 40px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
-
 .currentCheck-image {
-    position: absolute;
     width: 40px;
     height: 40px;
-    left: 0px;
-    top: 0px;
-
     background: #D4B5B5;
     background-image: url('./img/check.svg');
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 50%;
-    transform: translate(-50%, -50%);
 }
 
+.taskContent {
+    width: 623px;
+    height: 30px;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 30px;
+    color: #807A7A;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin-left: 1px;
+}
 
+.taskNumber {
+    width: 102px;
+    height: 35px;
 
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 30px;
+
+    color: #807A7A;
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.taskImg {
+    width: 40px;
+    height: 40px;
+    background-image: url('./img/task.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+}
 
 /* Sound controls */
 .soundBar {

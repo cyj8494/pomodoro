@@ -46,6 +46,9 @@ function App() {
                   <div className="currentTaskTxt">Current task</div>
                   <div className="currentTask">
                       <div className="currentCheck-image"></div>
+                      <div className="taskContent">Read 10 more pages of my favorite book</div>
+                      <div className="taskNumber">1 / 1</div>
+                      <div className="taskImg"></div>
                   </div>
               </div>
           </div>
