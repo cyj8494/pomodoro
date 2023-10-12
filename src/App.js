@@ -5,6 +5,7 @@ import rank from './img/Rank icon.svg';
 import setting from './img/Settings icon.svg';
 import vector from './img/Group 25.svg';
 import SoundBar from './Soundbar';
+import Center from './Center';
 
 function App() {
   return (
@@ -26,32 +27,7 @@ function App() {
               </div>
           </div>
 
-          <div className="center-box">
-              <div className="timer-frame">
-                  <div className="mode">
-                      <div className="pomodoro">Pomodoro</div>
-                      <div className="short-break">Short Break</div>
-                      <div className="long-break">Long Break</div>
-                  </div>
-                  <div className="timer-container">
-                      <div className="countdown-timer">
-
-                      </div>
-                  </div>
-                  <div className="timer-control-buttons">
-                      <div className="pause-button">
-                          START
-                      </div>
-                  </div>
-                  <div className="currentTaskTxt">Current task</div>
-                  <div className="currentTask">
-                      <div className="currentCheck-image"></div>
-                      <div className="taskContent">Read 10 more pages of my favorite book</div>
-                      <div className="taskNumber">1 / 1</div>
-                      <div className="taskImg"></div>
-                  </div>
-              </div>
-          </div>
+          <Center />
           <SoundBar />
           <div className="rightPanel">
               <div className="sidePanelPick">
