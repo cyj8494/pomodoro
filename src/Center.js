@@ -1,19 +1,82 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Center = () => {
+function Center() {
+    const [minutes, setMinutes] = useState(25);
+    const [seconds, setSeconds] = useState(0);
     const [isStarted, setIsStarted] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
+
+    useEffect(() => {
+        let interval;
+        if (isStarted && !isPaused) {
+            if (seconds > 0) {
+                interval = setInterval(() => {
+                    setSeconds(seconds => seconds - 1);
+                }, 1000);
+            } else if (seconds === 0) {
+                if (minutes === 0) {
+                    clearInterval(interval);
+                    setIsStarted(false);
+                } else {
+                    setMinutes(minutes => minutes - 1);
+                    setSeconds(59);
+                }
+            }
+        } else {
+            clearInterval(interval);
+        }
+
+        return () => clearInterval(interval);
+    }, [isStarted, isPaused, seconds]);
+
+    const resetTimer = () => {
+        setIsStarted(false);
+        setIsPaused(false);
+        setMinutes(25);
+        setSeconds(0);
+    };
+
+    const togglePauseRestart = () => {
+        setIsPaused(!isPaused);
+    };
+
+    const radius = 140; // SVG 원의 반지름
+    const circumference = 2 * Math.PI * radius;
+    const offset = ((minutes * 60 + seconds) / (25 * 60)) * circumference;
 
     return (
         <div className="center-box">
-            <div className="">
+            <div>
                 <div className="mode">
-                    <div className="pomodoro">Pomodoro</div>
                     <div className="short-break">Short Break</div>
+                    <div className="pomodoro">Pomodoro</div>
                     <div className="long-break">Long Break</div>
                 </div>
                 <div className="timer-container">
-                    <div className="countdown-timer">
-                        {/* Timer logic here */}
+                    <div className="leaf"></div>
+                    <svg className="timer-svg" width="17.5vw" height="17.5vw" viewBox="0 0 300 300">
+                        <circle
+                            r={radius}
+                            cx="150"
+                            cy="150"
+                            fill="none"
+                            stroke="#E66C6C"
+                            strokeWidth="10"
+                        />
+                        <circle
+                            r={radius}
+                            cx="150"
+                            cy="150"
+                            fill="none"
+                            stroke="#F2F2F2"
+                            strokeWidth="10"
+                            strokeDasharray={circumference}
+                            strokeDashoffset={offset}
+                            transform="rotate(-90 150 150)"
+                        />
+                    </svg>
+                    <div className="timer-remaining">
+                        {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
                     </div>
                 </div>
                 <div className="timer-control-buttons">
@@ -23,10 +86,10 @@ const Center = () => {
                         </div>
                     ) : (
                         <>
-                            <div className="pause-button">
-                                PAUSE
+                            <div className={isPaused ? "restart-button" : "pause-button"} onClick={togglePauseRestart}>
+                                {isPaused ? 'RESTART' : 'PAUSE'}
                             </div>
-                            <div className="reset-button">
+                            <div className="reset-button" onClick={resetTimer}>
                                 RESET
                             </div>
                         </>
