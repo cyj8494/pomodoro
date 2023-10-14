@@ -40,9 +40,18 @@ function Center() {
         setIsPaused(!isPaused);
     };
 
-    const radius = 130; // SVG 원의 반지름
+    const radius = 115; // SVG 원의 반지름
     const circumference = 2 * Math.PI * radius;
     const offset = ((minutes * 60 + seconds) / (25 * 60)) * circumference;
+
+    const renderGrayCircle = () => {
+        return (
+            <>
+                <circle cx="150" cy="150" r="120" fill="none" stroke="#F2F2F2" strokeWidth="10" />
+                <circle cx="150" cy="150" r="110" fill="none" stroke="#F2F2F2" strokeWidth="10" />
+            </>
+        );
+    };
 
     return (
         <div className="center-box">
@@ -55,6 +64,7 @@ function Center() {
                 <div className="timer-container">
                     <div className="leaf"></div>
                     <svg className="timer-svg" width="17.5vw" height="17.5vw" viewBox="0 0 300 300">
+                        {renderGrayCircle()}
                         <circle
                             r={radius}
                             cx="150"
@@ -69,11 +79,24 @@ function Center() {
                             cy="150"
                             fill="none"
                             stroke="#F2F2F2"
-                            strokeWidth="10"
+                            strokeWidth="12"
                             strokeDasharray={circumference}
                             strokeDashoffset={offset}
                             transform="rotate(-90 150 150)"
                         />
+                        {
+                            // 주위에 24개의 작은 원(도트)을 추가
+                            Array.from({ length: 24 }).map((_, index) => (
+                                <circle
+                                    key={index}
+                                    cx="150"
+                                    cy="15"
+                                    r="4.5"
+                                    fill="#FEBEBE"
+                                    transform={`rotate(${index * 15} 150 150)`}
+                                />
+                            ))
+                        }
                     </svg>
                     <div className="timer-remaining">
                         {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
