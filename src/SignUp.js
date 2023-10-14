@@ -10,13 +10,13 @@ const SignUp = ({ onClose }) => {
 
     const validateForm = () => {
         if (fullName.trim() === '') {
-            alert('이름을 써주세요.');
+            alert('이름을 입력해주세요.');
             return false;
         }
 
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         if (!emailRegex.test(email)) {
-            alert('유효한 이메일 주소를 알려주세요.');
+            alert('유효한 이메일 주소를 입력해주세요.');
             return false;
         }
 
@@ -37,7 +37,7 @@ const SignUp = ({ onClose }) => {
         if (!validateForm()) return;
 
         try {
-            const response = await fetch('', {
+            const response = await fetch('api주소', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

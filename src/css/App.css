@@ -308,8 +308,8 @@
 /* Timer */
 .timer-container {
     position: relative;
-    width: 35vw;
-    height: 39vh;
+    width: 33vw;
+    height: 36vh;
     left: 50%;
     top: 12vh;
     transform: translateX(-50%);
@@ -334,7 +334,7 @@
 
 .leaf {
     position: absolute;
-    top: 1%;
+    top: -5%;
     left: 50%;
     width: 5vw;
     height: 5vw;

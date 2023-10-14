@@ -40,7 +40,7 @@ function Center() {
         setIsPaused(!isPaused);
     };
 
-    const radius = 140; // SVG 원의 반지름
+    const radius = 130; // SVG 원의 반지름
     const circumference = 2 * Math.PI * radius;
     const offset = ((minutes * 60 + seconds) / (25 * 60)) * circumference;
 
