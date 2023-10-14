@@ -99,7 +99,9 @@ function Center() {
                         }
                     </svg>
                     <div className="timer-remaining">
-                        {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
+                        {String(minutes).padStart(2, '0')}
+                        <span className="colon">:</span>
+                        {String(seconds).padStart(2, '0')}
                     </div>
                 </div>
                 <div className="timer-control-buttons">

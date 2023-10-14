@@ -198,6 +198,7 @@
     font-weight: 500;
     font-size: 1.5rem;
     margin-right: 0.3em;
+    text-decoration: none;
 }
 
 .record-time {
@@ -328,8 +329,15 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'Josefin Sans';
-    font-weight: 500;
-    font-size: 3vw;
+    color: #5C3737;
+    font-weight: 600;
+    font-size: 2.7vw;
+}
+
+.colon {
+    color: #5C3737;
+    padding: 0 5px;
+    text-decoration: none;
 }
 
 .leaf {

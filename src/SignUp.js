@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './css/SignUp.css';
+import Arrow from './img/Arrow.svg';
+import Google from './img/Google.svg';
 
 const SignUp = ({ onClose }) => {
     const [fullName, setFullName] = useState('');
@@ -65,34 +67,43 @@ const SignUp = ({ onClose }) => {
     return (
         <div className="popup">
             <div className="popup-inner">
-                <h2>Sign Up</h2>
+                <h2>회원가입</h2>
                 <input
                     type="text"
-                    placeholder="Full name"
+                    placeholder="이름"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                 />
                 <input
                     type="email"
-                    placeholder="abc@email.com"
+                    placeholder="이메일"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
                     type="password"
-                    placeholder="Your password"
+                    placeholder="비밀번호"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <input
                     type="password"
-                    placeholder="Confirm password"
+                    placeholder="비밀번호 확인"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                <button onClick={handleSignUp}>SIGN UP</button>
-                <div>OR</div>
-                <button>Login with Google</button>
+                <div className="signup-container">
+                    <button className="signUp-button" onClick={handleSignUp}>
+                        회원가입
+                        <img src={Arrow} alt="Arrow" className="arrow-icon" />
+                    </button>
+                </div>
+
+                <div className="or">OR</div>
+                <button className="google-button">
+                    <img src={Google} alt="Google" className="google-icon" />
+                    Gmail로 로그인
+                </button>
                 <div>
                     Already have an account? <span onClick={onClose}>Sign in</span>
                 </div>
