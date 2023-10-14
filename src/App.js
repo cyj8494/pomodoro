@@ -1,19 +1,27 @@
-import React from 'react';
-import './App.css';
+import React, { useState } from 'react';
+import './css/App.css';
 import profile from './img/Profile icon.svg';
 import rank from './img/Rank icon.svg';
 import setting from './img/Settings icon.svg';
 import vector from './img/Group 25.svg';
 import SoundBar from './Soundbar';
 import Center from './Center';
+import SignUp from "./SignUp";
 
 function App() {
+    const [showPopup, setShowPopup] = useState(false);
+
   return (
       <div className="body">
           <div className="leftPanel">
               <div className="profile">
-                  <img src={profile} alt="profile" />
+                  <img
+                      src={profile}
+                      alt="profile"
+                      onClick={() => setShowPopup(true)}
+                  />
               </div>
+              {showPopup && <SignUp onClose={() => setShowPopup(false)} />}
               <div className="ranking">
                   <div className="rank">
                       <img src={rank} alt="rank" />
