@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import './css/Center.css';
 
 function Center() {
     const [minutes, setMinutes] = useState(25);
     const [seconds, setSeconds] = useState(0);
     const [isStarted, setIsStarted] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
+    const [maxTime, setMaxTime] = useState(25);
 
     useEffect(() => {
         let interval;
@@ -16,7 +18,8 @@ function Center() {
             } else if (seconds === 0) {
                 if (minutes === 0) {
                     clearInterval(interval);
-                    setIsStarted(false);
+                    setIsStarted(false);  // Start 버튼만 나오도록
+                    resetTimer(25);       // 기본값 25:00으로 재설정
                 } else {
                     setMinutes(minutes => minutes - 1);
                     setSeconds(59);
@@ -29,20 +32,13 @@ function Center() {
         return () => clearInterval(interval);
     }, [isStarted, isPaused, seconds]);
 
-    const resetTimer = () => {
-        setIsStarted(false);
-        setIsPaused(false);
-        setMinutes(25);
-        setSeconds(0);
-    };
-
     const togglePauseRestart = () => {
         setIsPaused(!isPaused);
     };
 
     const radius = 115; // SVG 원의 반지름
     const circumference = 2 * Math.PI * radius;
-    const offset = ((minutes * 60 + seconds) / (25 * 60)) * circumference;
+    const offset = ((minutes * 60 + seconds) / (maxTime * 60)) * circumference;
 
     const renderGrayCircle = () => {
         return (
@@ -53,13 +49,50 @@ function Center() {
         );
     };
 
+
+    const resetTimer = (minutesValue) => {
+        setIsStarted(false);
+        setIsPaused(false);
+        setMinutes(minutesValue);
+        setSeconds(0);
+        setMaxTime(minutesValue);
+    };
+
+    const setShortBreak = () => {
+        resetTimer(5);
+    };
+
+    const setLongBreak = () => {
+        resetTimer(15);
+    };
+
+    const setPomodoro = () => {
+        resetTimer(25);
+    }
+
+    const startTimer = () => {
+        setIsStarted(true);
+        if (minutes === 0 && seconds === 0) {
+            switch(maxTime) {
+                case 5:
+                    setShortBreak();
+                    break;
+                case 15:
+                    setLongBreak();
+                    break;
+                default:
+                    setPomodoro();
+            }
+        }
+    };
+
     return (
         <div className="center-box">
             <div>
                 <div className="mode">
-                    <div className="short-break">Short Break</div>
-                    <div className="pomodoro">Pomodoro</div>
-                    <div className="long-break">Long Break</div>
+                    <div className="short-break" onClick={setShortBreak}>Short Break</div>
+                    <div className="pomodoro" onClick={setPomodoro}>Pomodoro</div>
+                    <div className="long-break" onClick={setLongBreak}>Long Break</div>
                 </div>
                 <div className="timer-container">
                     <div className="leaf"></div>
@@ -85,7 +118,7 @@ function Center() {
                             transform="rotate(-90 150 150)"
                         />
                         {
-                            // 주위에 24개의 작은 원(도트)을 추가
+                            // 주위에 24개의 작은 원을 추가
                             Array.from({ length: 24 }).map((_, index) => (
                                 <circle
                                     key={index}
@@ -106,15 +139,15 @@ function Center() {
                 </div>
                 <div className="timer-control-buttons">
                     {!isStarted ? (
-                        <div className="start-button" onClick={() => setIsStarted(true)}>
+                        <div className="start-button" onClick={startTimer}>
                             START
                         </div>
                     ) : (
                         <>
                             <div className={isPaused ? "restart-button" : "pause-button"} onClick={togglePauseRestart}>
-                                {isPaused ? 'RESTART' : 'PAUSE'}
+                                {isPaused ? 'START' : 'PAUSE'}
                             </div>
-                            <div className="reset-button" onClick={resetTimer}>
+                            <div className="reset-button" onClick={() => resetTimer(maxTime)}>
                                 RESET
                             </div>
                         </>

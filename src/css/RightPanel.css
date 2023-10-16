@@ -1,0 +1,223 @@
+/* Right panel */
+.rightPanel {
+    position: relative;
+    width: 25.7vw;
+    height: 100vh;
+    right: 0;
+    top: 0;
+    background: #F2F2F2;
+}
+
+/* Side panel pick */
+.sidePanelPick {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 1.5vw;
+    position: absolute;
+    width: 17.4vw;
+    height: 3.67vh;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 5.73vh;
+}
+
+/* My tasks button */
+.myTasksButton, .myRecordButton {
+    width: 7.94vw;
+    height: 3.67vh;
+    flex: none;
+    flex-grow: 0;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.79vh;
+    line-height: 1.79vh;
+    text-align: center;
+}
+
+.myTasksButton {
+    background: #E66C6C;
+    color: #FFFFFF;
+}
+
+.myRecordButton {
+    background: #FFFFFF;
+    color: #807A7A;
+    order: 1;
+}
+
+
+/* Today's focus */
+
+.dateText {
+    width: 204px;
+    height: 18px;
+    margin: 13.5vh auto 0;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    max-width: 49vh;
+    margin: 0 auto;
+}
+
+/* Today's focus */
+
+.focus-box {
+    position: absolute;
+    width: 97%;
+    background: #FFFFFF;
+    border-radius: 10px;
+    transform: translateX(-50%);
+    top: 5vh;
+    left: 50%;
+}
+
+/* Record */
+
+.record {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.record-heading {
+
+    font-size: 1rem;
+    color: #D4B5B5;
+}
+
+.record-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.record-time .large-number {
+    font-family: 'Outfit';
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-right: 0.3em;
+    text-decoration: none;
+}
+
+.record-time {
+    font-family: 'Outfit';
+    font-size: 1rem;
+    color: #E66C6C;
+}
+
+.image-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 100%;
+}
+
+.image {
+    width: 27px;
+    height: 27px;
+    background: url('../img/image 15.png');
+    max-width: 100%;
+}
+
+.times-two {
+    font-family: 'Outfit';
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.completed {
+    position: absolute;
+    width: 90%;
+    height: 6vh;
+    top: 38vh;
+    left: 7%;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1vw;
+    line-height: 18px;
+    color: #807A7A;
+}
+
+.to-do {
+    position: absolute;
+    width: 90%;
+    height: 6vh;
+    top: 45vh;
+    left: 7%;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1vw;
+    line-height: 18px;
+    color: #807A7A;
+}
+
+.down-arrow {
+    display: inline-block;
+    width: 1.5vw;
+    height: 1.5vw;
+    background-image: url("../img/down-arrow.png");
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center bottom;
+}
+
+.taskPlus {
+    position: absolute;
+    width: 100%;
+    height: 10vh;
+    top: 90vh;
+}
+
+.addTask {
+    box-sizing: border-box;
+    border: 3px solid #E66C6C;
+    border-radius: 50px;
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    left: 2.5vw;
+    top: 4vh;
+    background-image: url("../img/Plus.svg");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+}
+
+.vector {
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    left: 22vw;
+    top: 4.1vh;
+    background-image: url("../img/Vector.svg");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+}

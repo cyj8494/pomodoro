@@ -88,11 +88,11 @@ input[type="password"] {
 .signUp-button {
     width: 50%;
     height: 6vh;
-    box-shadow: 0px 10px 35px 0px #A98E8E66;
-    border-radius: 10px;
+    background: #E66C6C;
+    box-shadow: 0px 10px 35px rgba(169, 142, 142, 0.4);
+    border-radius: 15px;
 
     padding: 15px;
-    background-color: #E66C6C;
     color: white;
     border: none;
     font-size: 14px;
@@ -110,16 +110,14 @@ input[type="password"] {
 .google-button {
     width: 65%;
     height: 7vh;
-    box-shadow: 0px 10px 35px 0px #A98E8E66;
-
-
+    background: #FFFFFF;
+    box-shadow: 15px 0px 30px rgba(237, 215, 215, 0.4);
+    border-radius: 12px;
     padding: 15px;
-    background-color: #FFFFFF;
     border: none;
-    border-radius: 5px;
+
     font-family: Outfit;
     color: #807A7A;
-
     font-size: 16px;
     font-weight: 400;
     line-height: 25px;
@@ -146,7 +144,8 @@ input[type="password"] {
 .google-icon {
     height: 1.5vw;
     width: 1.5vw;
-    margin-right: 1.5vw;
+    margin-right: 2vw;
+    margin-bottom: 1vh;
     vertical-align: middle;
 }
 
@@ -158,6 +157,21 @@ input[type="password"] {
     letter-spacing: 0px;
     text-align: center;
     color: #807A7A;
+}
+
+.askAccount {
+    font-family: Outfit;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+    color : #807A7A;
+    margin-top: 1vh;
+}
+
+.askAccount > span {
+    color : #E66C6C;
 }
 
 div > button:not(.close-btn) {

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './css/SignUp.css';
 import Arrow from './img/Arrow.svg';
 import Google from './img/Google.svg';
+<script src='https://unpkg.com/axios/dist/axios.min.js'></script>
 
 const SignUp = ({ onClose }) => {
     const [fullName, setFullName] = useState('');
@@ -102,10 +102,10 @@ const SignUp = ({ onClose }) => {
                 <div className="or">OR</div>
                 <button className="google-button">
                     <img src={Google} alt="Google" className="google-icon" />
-                    Gmail로 로그인
+                    Google로 로그인
                 </button>
-                <div>
-                    Already have an account? <span onClick={onClose}>Sign in</span>
+                <div className="askAccount">
+                    계정이 이미 있습니까? <span onClick={onClose}>Login</span>
                 </div>
                 <button onClick={onClose} className="close-btn">X</button>
             </div>

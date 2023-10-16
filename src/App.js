@@ -3,10 +3,11 @@ import './css/App.css';
 import profile from './img/Profile icon.svg';
 import rank from './img/Rank icon.svg';
 import setting from './img/Settings icon.svg';
-import vector from './img/Group 25.svg';
+import logout from './img/Group 25.svg';
 import SoundBar from './Soundbar';
 import Center from './Center';
 import SignUp from "./SignUp";
+import RightPanel from "./RightPanel";
 
 function App() {
     const [showPopup, setShowPopup] = useState(false);
@@ -30,45 +31,14 @@ function App() {
               <div className="setting">
                   <img src={setting} alt="setting" />
               </div>
-              <div className="vector">
-                  <img src={vector} alt="vector" />
+              <div className="logout">
+                  <img src={logout} alt="logout" />
               </div>
           </div>
 
           <Center />
           <SoundBar />
-          <div className="rightPanel">
-              <div className="sidePanelPick">
-                  <div className="myTasksButton">My Tasks</div>
-                  <div className="myRecordButton">My Records</div>
-              </div>
-              <div className="dateText">Today: October</div>
-
-              <div className="container">
-
-                  <div className="focus-box">
-                      <div className="record">
-                          <div className="record-heading">
-                              Today, you have focused for
-                          </div>
-                          <div className="record-details">
-                              <div className="record-time">
-                                  <span className="large-number">50</span>
-                                  Minutes &&nbsp;
-                                  <span className="large-number">23</span>
-                                  Seconds
-                              </div>
-                              <div className="image-box">
-                                  <div className="times-two">2x</div>
-                                  <div className="image"></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-
-              </div>
-          </div>
+          <RightPanel />
       </div>
   );
 }
