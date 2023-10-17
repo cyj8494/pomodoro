@@ -30,8 +30,8 @@ body.overflow-hidden {
     position: absolute;
     top: 20px;
     right: 20px;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     line-height: 25px;
     text-align: center;
     border: none;
@@ -40,8 +40,12 @@ body.overflow-hidden {
     font-size: 16px;
     color: black;
     cursor: pointer;
-    padding: 0;       /* 패딩 제거 */
-    border-radius: 50%; /* 원형 모양으로 */
+    padding: 0;
+    border-radius: 50%;
+    background-image: url('../img/close.svg');
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center;
 }
 
 h2 {
@@ -79,7 +83,7 @@ input[type="password"] {
     background-size: 4%;
 }
 
-.signup-container {
+.sign-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -172,6 +176,7 @@ input[type="password"] {
 
 .askAccount > span {
     color : #E66C6C;
+    cursor: pointer;
 }
 
 div > button:not(.close-btn) {

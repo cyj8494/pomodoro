@@ -6,11 +6,27 @@ import setting from './img/Settings icon.svg';
 import logout from './img/Group 25.svg';
 import SoundBar from './Soundbar';
 import Center from './Center';
-import SignUp from "./SignUp";
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 import RightPanel from "./RightPanel";
 
 function App() {
-    const [showPopup, setShowPopup] = useState(false);
+    const [showSignIn, setShowSignIn] = useState(false);
+    const [showSignUp, setShowSignUp] = useState(false);
+
+    const handleOpenSignIn = () => {
+        setShowSignIn(true);
+    };
+
+    const handleOpenSignUp = () => {
+        setShowSignIn(false);
+        setShowSignUp(true);
+    };
+
+    const handleClosePopup = () => {
+        setShowSignIn(false);
+        setShowSignUp(false);
+    };
 
   return (
       <div className="body">
@@ -19,10 +35,11 @@ function App() {
                   <img
                       src={profile}
                       alt="profile"
-                      onClick={() => setShowPopup(true)}
+                      onClick={handleOpenSignIn}
                   />
               </div>
-              {showPopup && <SignUp onClose={() => setShowPopup(false)} />}
+              {showSignIn && <SignIn onSignUp={handleOpenSignUp} onClose={handleClosePopup} />}
+              {showSignUp && <SignUp onClose={handleClosePopup} />}
               <div className="ranking">
                   <div className="rank">
                       <img src={rank} alt="rank" />

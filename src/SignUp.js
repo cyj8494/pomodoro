@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import './css/SignUp.css';
+import './css/Sign.css';
+import SignIn from './SignIn';
 import Arrow from './img/Arrow.svg';
 import Google from './img/Google.svg';
 <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
 
-const SignUp = ({ onClose }) => {
+const SignUp = ({ onClose, onSignUp }) => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [showSignIn, setShowSignIn] = useState(false);
+
+    if (showSignIn) {
+        return <SignIn onSignUp={onSignUp} onClose={onClose} />;
+    }
+
 
     const validateForm = () => {
         if (fullName.trim() === '') {
@@ -92,7 +99,7 @@ const SignUp = ({ onClose }) => {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                <div className="signup-container">
+                <div className="sign-container">
                     <button className="signUp-button" onClick={handleSignUp}>
                         회원가입
                         <img src={Arrow} alt="Arrow" className="arrow-icon" />
@@ -105,9 +112,9 @@ const SignUp = ({ onClose }) => {
                     Google로 로그인
                 </button>
                 <div className="askAccount">
-                    계정이 이미 있습니까? <span onClick={onClose}>Login</span>
+                    계정이 이미 있습니까? <span onClick={() => setShowSignIn(true)}>Login</span>
                 </div>
-                <button onClick={onClose} className="close-btn">X</button>
+                <button onClick={onClose} className="close-btn"></button>
             </div>
         </div>
     );
