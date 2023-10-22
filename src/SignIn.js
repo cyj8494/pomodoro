@@ -50,12 +50,11 @@ function SignIn({ onSignUp, onClose }) {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <div className="sign-container">
-                    <button className="signUp-button" onClick={login}>
+
+                <button className="signUp-button" onClick={login}>
                         로그인
-                        <img src={Arrow} alt="Arrow" className="arrow-icon" />
-                    </button>
-                </div>
+                    <img src={Arrow} alt="Arrow" className="arrow-icon" />
+                </button>
 
                 <div className="or">OR</div>
                 <button className="google-button">

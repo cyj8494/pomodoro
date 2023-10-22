@@ -99,12 +99,12 @@ const SignUp = ({ onClose, onSignUp }) => {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                <div className="sign-container">
-                    <button className="signUp-button" onClick={handleSignUp}>
+
+                <button className="signUp-button" onClick={handleSignUp}>
                         회원가입
-                        <img src={Arrow} alt="Arrow" className="arrow-icon" />
-                    </button>
-                </div>
+                    <img src={Arrow} alt="Arrow" className="arrow-icon" />
+                </button>
+
 
                 <div className="or">OR</div>
                 <button className="google-button">

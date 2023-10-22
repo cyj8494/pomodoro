@@ -1,0 +1,138 @@
+textarea {
+    resize: none;
+}
+
+.taskContainer {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.taskQuestion {
+    position: relative;
+    order: -1;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.3vw;
+    line-height: 44px;
+    display: flex;
+    align-items: center;
+
+    color: #D4B5B5;
+}
+
+.pomodoroContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5vw;
+}
+
+.timeControls {
+    order: 2;
+    display: flex;
+    align-items: center;
+    width: 5.55vw;
+    height: 4vh;
+    box-sizing: content-box;
+    background: #F2F2F2;
+    border: 1px solid #D4B5B5;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.pomodoroCount {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1vw;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2vw;
+    height: 4vh;
+    margin-inside : 50%;
+    background-color: #F2F2F2;
+    color: #807A7A;
+}
+
+.minusButton, .plusButton {
+    width: 1.8vw;
+    height: 4vh;
+    background: #FFFFFF;
+    cursor: pointer;
+    border: none;
+}
+
+.notesInput {
+    box-sizing: border-box;
+
+    height: 9vh;
+    left: calc(50% - 590px/2);
+
+    border: 1px solid #D4B5B5;
+    border-radius: 13px;
+}
+
+.notesInput::placeholder {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1vw;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    color: #D4B5B5;
+}
+
+.taskAddButtons {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.8vw;
+}
+
+.cancelButton {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1vw;
+    line-height: 38px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #D4B5B5;
+    border: none;
+    background: #FFFFFF;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    cursor: pointer;
+}
+
+.addButton {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1vw;
+    line-height: 38px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    box-shadow: 0px 4px 4px rgba(169, 142, 142, 0.4);
+    border-radius: 12px;
+    background: #E66C6C;
+    border: none;
+    color: #FFFFFF;
+    padding-left: 1.2vw;
+    padding-right: 1.2vw;
+    cursor: pointer;
+}
