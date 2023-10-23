@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import AddTask from "./AddTask";
 import './css/RightPanel.css';
+import Account from './Account';
 
 function RightPanel() {
     const [showTaskAdd, setShowTaskAdd] = useState(false);
+    const [showAccount, setShowAccount] = useState(false);
 
-    function handleAddTaskClick() {
+    function addTask() {
         setShowTaskAdd(true);
+    }
+    function modifyAccount() {
+        setShowAccount(true);
     }
 
     return (
@@ -40,11 +45,12 @@ function RightPanel() {
             <div className="completed">Completed <span className="down-arrow"></span></div>
             <div className="to-do">To-do <span className="down-arrow"></span></div>
             <div className="taskPlus">
-                <div className="addTask" onClick={handleAddTaskClick}></div>
-                <div className="vector"></div>
+                <div className="addTask" onClick={addTask}></div>
+                <div className="vector" onClick={modifyAccount}></div>
             </div>
 
             { showTaskAdd && <AddTask onClose={() => setShowTaskAdd(false)} /> }
+            { showAccount && <Account onClose={() => setShowAccount(false)} /> }
         </div>
     );
 }
