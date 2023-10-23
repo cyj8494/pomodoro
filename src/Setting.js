@@ -4,9 +4,9 @@ import axios from 'axios';
 
 function Setting({ onClose }) {
 
-    const [pomodoros, setPomodoros] = useState(1);
-    const [shortBreak, setShortBreak] = useState(1);
-    const [longBreak, setLongBreak] = useState(1);
+    const [pomodoros, setPomodoros] = useState(25);
+    const [shortBreak, setShortBreak] = useState(5);
+    const [longBreak, setLongBreak] = useState(15);
 
     return (
         <div className="popup">
@@ -34,7 +34,7 @@ function Setting({ onClose }) {
                         </div>
                         <div className="timeControls">
                             <button className="minusButton" onClick={() => setLongBreak(Math.max(0, longBreak - 1))}>-</button>
-                            <span className="pomodoroCount">{pomodoros}</span>
+                            <span className="pomodoroCount">{longBreak}</span>
                             <button className="plusButton" onClick={() => setLongBreak(longBreak + 1)}>+</button>
                         </div>
                     </div>
