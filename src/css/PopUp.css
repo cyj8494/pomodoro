@@ -7,6 +7,7 @@ textarea {
     display: flex;
     flex-direction: column;
     gap: 30px;
+
 }
 
 .taskQuestion {
@@ -176,4 +177,24 @@ textarea {
     color: #807A7A;
     font-size: 1vw;
     letter-spacing: 1px;
+}
+
+.settingMenu {
+    text-align: left;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+}
+
+.timerSetting {
+    color : #807A7A;
+}
+
+.toggle {
+    width: 2vw;
+    height: 4vh;
+    background-image: url('../img/ToggleOn.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
 }
