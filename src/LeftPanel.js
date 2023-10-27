@@ -6,11 +6,13 @@ import logout from './img/Group 25.svg';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Setting from './Setting';
+import Profile from './Profile';
 
 function LeftPanel() {
     const [showSignIn, setShowSignIn] = useState(false);
     const [showSignUp, setShowSignUp] = useState(false);
     const [showSetting, setShowSetting] = useState(false);
+    const [showProfile, setShowProfile] = useState(false);
 
     const handleOpenSignIn = () => {
         setShowSignIn(true);
@@ -29,6 +31,10 @@ function LeftPanel() {
     const openSetting = () => {
         setShowSetting(true);
     };
+
+    const openProfile = () => {
+        setShowProfile(true);
+    }
 
     return (
         <div className="leftPanel">
@@ -51,8 +57,9 @@ function LeftPanel() {
             </div>
             {showSetting && <Setting onClose={() => setShowSetting(false)} />}
             <div className="logout">
-                <img src={logout} alt="logout" />
+                <img src={logout} alt="logout" onClick={openProfile} />
             </div>
+            {showProfile && <Profile onClose={() => setShowProfile(false)} />}
         </div>
     );
 }

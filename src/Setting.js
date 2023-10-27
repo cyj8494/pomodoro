@@ -14,10 +14,10 @@ function Setting({ onClose }) {
                 <h2>설정</h2>
                 <button onClick={onClose} className="close-btn"></button>
 
-                <div className="taskContainer">
+                <div className="settingContainer">
                     <div className="settingMenu">시간(분)</div>
                     <div className="pomodoroContainer">
-                        <div className="timerSetting">Pomodoro</div>
+                        <div className="timerSetting"> Pomodoro </div>
                         <div className="timerSetting">Short Break</div>
                         <div className="timerSetting">Long Break</div>
                     </div>

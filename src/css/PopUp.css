@@ -35,8 +35,8 @@ textarea {
     order: 2;
     display: flex;
     align-items: center;
-    width: 5.2vw;
-    height: 3.5vh;
+    width: 77px;
+    height: 30px;
     box-sizing: content-box;
     background: #F2F2F2;
     border: 1px solid #D4B5B5;
@@ -55,16 +55,16 @@ textarea {
     text-align: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 2.4vw;
-    height: 3.5vh;
+    width: 38px;
+    height: 30px;
     margin-inside : 50%;
     background-color: #F2F2F2;
     color: #807A7A;
 }
 
 .minusButton {
-    width: 1.5vw;
-    height: 3.5vh;
+    width: 20px;
+    height: 30px;
     background: #FFFFFF;
     cursor: pointer;
     border: none;
@@ -72,8 +72,8 @@ textarea {
 }
 
 .plusButton {
-    width: 1.5vw;
-    height: 3.5vh;
+    width: 20px;
+    height: 30px;
     background: #FFFFFF;
     cursor: pointer;
     border: none;
@@ -148,9 +148,31 @@ textarea {
     cursor: pointer;
 }
 
-.profileIcon {
-    width: 4.5vw;
-    height: 4.5vw;
+.profileIcon1 {
+    width: 60px;
+    height: 60px;
+    background: #E66C6C;
+    border-radius: 100px;
+    background-image: url('../img/User06.svg');
+    background-repeat: no-repeat;
+    background-size: 75%;
+    background-position: center 100%;
+}
+
+.profileIcon2 {
+    width: 60px;
+    height: 60px;
+    background: #E66C6C;
+    border-radius: 100px;
+    background-image: url('../img/User06.svg');
+    background-repeat: no-repeat;
+    background-size: 75%;
+    background-position: center 100%;
+}
+
+.profileIcon3 {
+    width: 60px;
+    height: 60px;
     background: #E66C6C;
     border-radius: 100px;
     background-image: url('../img/User06.svg');
@@ -179,6 +201,14 @@ textarea {
     letter-spacing: 1px;
 }
 
+.settingContainer {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
 .settingMenu {
     text-align: left;
     font-family: 'Outfit';
@@ -197,4 +227,22 @@ textarea {
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
+}
+
+.right-arrow {
+    width: 35px;
+    height: 35px;
+    background-image: url('../img/right-arrow.png');
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center 50%;
+}
+
+.left-arrow {
+    width: 35px;
+    height: 35px;
+    background-image: url('../img/left-arrow.png');
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center 50%;
 }

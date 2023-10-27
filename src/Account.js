@@ -26,7 +26,7 @@ function Account({ onClose }) {
                                 value={userName}
                                 onChange={nameChange}
                             />
-                        <div className="mail">user@email.com</div>
+                            <div className="mail">user@email.com</div>
                         </div>
                     </div>
 

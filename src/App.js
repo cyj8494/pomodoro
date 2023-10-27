@@ -10,7 +10,6 @@ function App() {
         <div className="body">
             <LeftPanel />
             <Center />
-            <SoundBar />
             <RightPanel />
         </div>
     );
