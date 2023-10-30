@@ -7,14 +7,17 @@ function RightPanel() {
     const [showTaskAdd, setShowTaskAdd] = useState(false);
     const [showAccount, setShowAccount] = useState(false);
     const [expandedSection, setExpandedSection] = useState(null);
-    const [notes, setNotes] = useState("");
-    const [pomodoros, setPomodoros] = useState("");
-    const [sessions, setSessions] = useState([]);
+    const [tasks, setTasks] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 4;
+
+    // 현재 페이지에 따라 표시해야 할 태스크를 계산합니다.
+    const paginatedTasks = tasks.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
 
     useEffect(() => {
-        const storedSessions = JSON.parse(localStorage.getItem('sessions') || "[]");
-        setSessions(storedSessions);
-
+        const storedTasks = JSON.parse(localStorage.getItem('tasks') || "[]"); // 'sessions'를 'tasks'로 변경
+        setTasks(storedTasks);
     }, []);
 
     function addTask() {
@@ -94,17 +97,39 @@ function RightPanel() {
                         className={`down-arrow ${expandedSection === 'todo' ? 'up-arrow' : ''}`}
                         onClick={() => toggleSection('todo')}>
                     </span>
-                    { expandedSection === 'todo' &&
-                        sessions.map(session => (
-                            <div className="hiddenContent" key={session.id}>
-                                <div className="task-box">
-                                    <div className="taskStatus">Uncompleted</div>
-                                    <div className="sessionContent">{session.notes}</div>
-                                    <div className="sessionPomodoro">{session.pomodoros}</div>
-                                </div>
-                            </div>
-                        ))
-                    }
+                    <div className="hiddenDiv">
+                        { expandedSection === 'todo' && (
+                            <>
+                                {paginatedTasks.map(task => (
+                                    <div className="hiddenContent" key={task.id}>
+                                        <div className="task-box">
+                                            <div className="taskStatus">Uncompleted</div>
+                                            <div className="sessionContent">{task.notes}</div>
+                                            <div className="sessionPomodoro">{task.pomodoros}</div>
+                                        </div>
+                                    </div>
+                                ))}
+
+                                {tasks.length > itemsPerPage && (  // 태스크가 4개 이상일 때만 페이지네이션 컨트롤을 보여줍니다.
+                                    <div className="pagination">
+                                        <button
+                                            onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                                            disabled={currentPage === 1}
+                                        >
+                                            이전
+                                        </button>
+                                        <span>{currentPage}</span>
+                                        <button
+                                            onClick={() => setCurrentPage(prev => (prev * itemsPerPage < tasks.length ? prev + 1 : prev))}
+                                            disabled={currentPage * itemsPerPage >= tasks.length}
+                                        >
+                                            다음
+                                        </button>
+                                    </div>
+                                )}
+                            </>
+                        )}
+                    </div>
                 </div>
 
             </div>

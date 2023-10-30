@@ -13,8 +13,14 @@ function AddTask({ onClose }) {
         }
     }, []);
 
+    const getMaxId = () => {
+        if (tasks.length === 0) return 0;
+        return Math.max(...tasks.map(task => task.id));
+    }
+
     const saveStorage = () => {
         const newTask = {
+            id: getMaxId() + 1,
             notes: notes,
             pomodoros: pomodoros
         };
@@ -24,6 +30,8 @@ function AddTask({ onClose }) {
         localStorage.setItem('tasks', JSON.stringify(updatedTasks));
 
         onClose();
+
+        window.location.reload();
     };
 
     return (
