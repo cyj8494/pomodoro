@@ -11,16 +11,18 @@ function SignIn({ onSignUp, onClose }) {
     const [password, setPassword] = useState('');
 
     const login = () => {
-        axios.post('/api/login', { email, password })
+        axios.get('/user-service/users')
             .then(response => {
                 if (response.data.success) {
                     alert('로그인에 성공했습니다!');
                 } else {
-                    alert('로그인에 실패했습니다. 다시 시도해주세요');
+                    alert('로그인에 실패했습니다. 다시 시도해주세요!');
+                    console.log(response.data);
                 }
             })
             .catch(error => {
                 alert('로그인에 실패했습니다. 다시 시도해주세요.');
+                console.error(error);
             });
     };
 
