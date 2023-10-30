@@ -16,7 +16,7 @@ textarea {
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 500;
-    font-size: 1.3vw;
+    font-size: 23px;
     line-height: 44px;
     display: flex;
     align-items: center;
@@ -88,17 +88,18 @@ textarea {
 
     border: 1px solid #D4B5B5;
     border-radius: 13px;
+    padding-left: 10px;
+    padding-top: 7px;
 }
 
 .notesInput::placeholder {
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 300;
-    font-size: 1vw;
+    font-size: 15px;
     line-height: 32px;
     display: flex;
     align-items: center;
-    padding-left: 10px;
     color: #D4B5B5;
 }
 

@@ -1,9 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './css/PopUp.css';
-import axios from 'axios';
 
 function AddTask({ onClose }) {
     const [pomodoros, setPomodoros] = useState(1);
+    const [notes, setNotes] = useState('');
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+        const savedTasks = localStorage.getItem('tasks');
+        if (savedTasks) {
+            setTasks(JSON.parse(savedTasks));
+        }
+    }, []);
+
+    const saveStorage = () => {
+        const newTask = {
+            notes: notes,
+            pomodoros: pomodoros
+        };
+
+        const updatedTasks = [...tasks, newTask];
+        setTasks(updatedTasks);
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+
+        onClose();
+    };
 
     return (
         <div className="popup">
@@ -23,11 +44,16 @@ function AddTask({ onClose }) {
                         </div>
                     </div>
 
-                    <textarea className="notesInput" placeholder="Notes..."></textarea>
+                    <textarea
+                        className="notesInput"
+                        placeholder="Notes..."
+                        value={notes}
+                        onChange={e => setNotes(e.target.value)}
+                    ></textarea>
 
                     <div className="taskAddButtons">
                         <button className="cancelButton" onClick={onClose}>CANCEL</button>
-                        <button className="addButton">ADD</button>
+                        <button className="addButton" onClick={saveStorage}>ADD</button>
                     </div>
                 </div>
             </div>
