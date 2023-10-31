@@ -3,7 +3,7 @@ import AddTask from "./AddTask";
 import './css/RightPanel.css';
 import Account from './Account';
 
-function RightPanel() {
+function RightPanel({ currentTask, setCurrentTask }) {
     const [showTaskAdd, setShowTaskAdd] = useState(false);
     const [showAccount, setShowAccount] = useState(false);
     const [expandedSection, setExpandedSection] = useState(null);
@@ -26,16 +26,20 @@ function RightPanel() {
 
     const statusChange = (taskId) => {
         setTasks(prevTasks => {
+            let updatedCurrentTask = '';
             const newTasks = prevTasks.map(task => {
                 if (task.id === taskId) {
                     const newStatus = task.status === 'U' ? 'C' : 'U';
                     sessionStorage.setItem(task.id, newStatus);
+                    if (newStatus === 'C') {
+                        updatedCurrentTask = task.notes;  // 여기서 현재 태스크의 내용을 업데이트합니다.
+                    }
                     return { ...task, status: newStatus };
                 }
-                // 다른 모든 작업의 상태를 'U'로 설정
                 sessionStorage.setItem(task.id, 'U');
                 return { ...task, status: 'U' };
             });
+            setCurrentTask(updatedCurrentTask);  // 여기서 setCurrentTask를 호출하여 App의 상태를 업데이트합니다.
             localStorage.setItem('tasks', JSON.stringify(newTasks));
             return newTasks;
         });

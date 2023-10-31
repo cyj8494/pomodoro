@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './css/Center.css';
 
-function Center() {
+function Center({ currentTask, setCurrentTask }) {
     const [minutes, setMinutes] = useState(25);
     const [seconds, setSeconds] = useState(0);
     const [isStarted, setIsStarted] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [maxTime, setMaxTime] = useState(25);
-    const [currentTask, setCurrentTask] = useState('');
 
     useEffect(() => {
         let interval;
@@ -36,10 +35,9 @@ function Center() {
     const fetchLocalStorage = () => {
         const storedTasks = JSON.parse(localStorage.getItem('tasks') || "[]");
         const activeTask = storedTasks.find(task => task.status === 'C');
-        if (activeTask) {
-            setCurrentTask(activeTask.notes);
-        }
+        setCurrentTask(activeTask ? activeTask.notes : '');  // 현재 태스크가 있으면 그것을 설정하고, 그렇지 않으면 빈 문자열로 설정
     };
+
 
     useEffect(() => {
         // 컴포넌트가 마운트될 때 localStorage에서 데이터를 불러옴
@@ -53,7 +51,6 @@ function Center() {
 
         window.addEventListener('storage', onStorageChange);
 
-        // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거
         return () => {
             window.removeEventListener('storage', onStorageChange);
         };
@@ -185,7 +182,6 @@ function Center() {
                     <div className="currentCheck-image"></div>
                     <div className="taskContent">{currentTask}</div>
                     <div className="taskNumber">1 / 1</div>
-                    <div className="taskImg"></div>
                 </div>
             </div>
         </div>
