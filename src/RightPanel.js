@@ -26,25 +26,26 @@ function RightPanel({ currentTask, setCurrentTask }) {
 
     const statusChange = (taskId) => {
         setTasks(prevTasks => {
-            let updatedCurrentTask = '';
+            let updatedCurrentTask = null;
             const newTasks = prevTasks.map(task => {
                 if (task.id === taskId) {
                     const newStatus = task.status === 'U' ? 'C' : 'U';
                     sessionStorage.setItem(task.id, newStatus);
                     if (newStatus === 'C') {
-                        updatedCurrentTask = task.notes;  // 여기서 현재 태스크의 내용을 업데이트합니다.
+                        updatedCurrentTask = { ...task, status: newStatus }; // 상태 변경된 태스크를 업데이트합니다.
                     }
                     return { ...task, status: newStatus };
                 }
                 sessionStorage.setItem(task.id, 'U');
                 return { ...task, status: 'U' };
             });
-            setCurrentTask(updatedCurrentTask);  // 여기서 setCurrentTask를 호출하여 App의 상태를 업데이트합니다.
+            setCurrentTask(updatedCurrentTask); // 여기서는 태스크 전체 객체를 업데이트하지 않고 상태만 업데이트합니다.
             localStorage.setItem('tasks', JSON.stringify(newTasks));
             return newTasks;
         });
         window.dispatchEvent(new Event('storage'));
     };
+
 
     function addTask() {
         setShowTaskAdd(true);
@@ -104,7 +105,7 @@ function RightPanel({ currentTask, setCurrentTask }) {
                     <span
                         className={`down-arrow ${expandedSection === 'todo' ? 'up-arrow' : ''}`}
                         onClick={() => toggleSection('todo')}>
-                    </span>
+    </span>
                     <div className="hiddenDiv">
                         { expandedSection === 'todo' && (
                             <>
@@ -113,10 +114,10 @@ function RightPanel({ currentTask, setCurrentTask }) {
                                         <div className="task-box">
                                             <div className="taskStatus">{task.status === 'C' ? 'Current Task' : 'Uncompleted'}</div>
                                             <div className="sessionContent">
-                                                <span
-                                                    style={{ backgroundColor: task.status === 'C' ? '#2BA24C' : '#D4B5B5' }}
-                                                    onClick={() => statusChange(task.id)}
-                                                ></span>
+                                <span
+                                    style={{ backgroundColor: task.status === 'C' ? '#2BA24C' : '#D4B5B5' }}
+                                    onClick={() => statusChange(task.id)}
+                                ></span>
                                                 <div>{task.notes}</div>
                                             </div>
                                             <div className="sessionPomodoro">총 소요시간 : {task.pomodoros * 25}분</div>

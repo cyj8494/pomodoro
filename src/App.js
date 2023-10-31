@@ -6,7 +6,7 @@ import LeftPanel from './LeftPanel';
 import RightPanel from "./RightPanel";
 
 function App() {
-    const [currentTask, setCurrentTask] = useState('');
+    const [currentTask, setCurrentTask] = useState({});
     return (
         <div className="body">
             <LeftPanel />

@@ -35,9 +35,12 @@ function Center({ currentTask, setCurrentTask }) {
     const fetchLocalStorage = () => {
         const storedTasks = JSON.parse(localStorage.getItem('tasks') || "[]");
         const activeTask = storedTasks.find(task => task.status === 'C');
-        setCurrentTask(activeTask ? activeTask.notes : '');  // 현재 태스크가 있으면 그것을 설정하고, 그렇지 않으면 빈 문자열로 설정
+        if (activeTask) {
+            setCurrentTask(activeTask);
+        } else {
+            setCurrentTask({}); // 현재 태스크가 없는 경우 빈 객체로 설정
+        }
     };
-
 
     useEffect(() => {
         // 컴포넌트가 마운트될 때 localStorage에서 데이터를 불러옴
@@ -178,11 +181,13 @@ function Center({ currentTask, setCurrentTask }) {
                     )}
                 </div>
                 <div className="currentTaskTxt">Current task</div>
-                <div className="currentTask">
-                    <div className="currentCheck-image"></div>
-                    <div className="taskContent">{currentTask}</div>
-                    <div className="taskNumber">1 / 1</div>
-                </div>
+                {currentTask && currentTask.status === 'C' && (
+                    <div className="currentTask">
+                        <div className="currentCheck-image"></div>
+                        <div className="taskContent">{currentTask.notes}</div>
+                        <div className="taskNumber">1 / {currentTask.pomodoros}</div>
+                    </div>
+                )}
             </div>
         </div>
     );
