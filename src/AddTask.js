@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './css/PopUp.css';
 
-function AddTask({ onClose }) {
+function AddTask({ onClose, onAdd }) {
     const [pomodoros, setPomodoros] = useState(1);
     const [notes, setNotes] = useState('');
     const [tasks, setTasks] = useState([]);
@@ -31,8 +31,7 @@ function AddTask({ onClose }) {
         localStorage.setItem('tasks', JSON.stringify(updatedTasks));
 
         onClose();
-
-        window.location.reload();
+        onAdd();
     };
 
     return (

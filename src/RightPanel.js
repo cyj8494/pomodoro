@@ -15,10 +15,13 @@ function RightPanel() {
     const paginatedTasks = tasks.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
 
-    useEffect(() => {
+    const reloadTasks = () => {
         const storedTasks = JSON.parse(localStorage.getItem('tasks') || "[]");
         setTasks(storedTasks.map(task => ({ ...task, status: sessionStorage.getItem(task.id) || 'U' })));
-        setTasks(storedTasks);
+    };
+
+    useEffect(() => {
+        reloadTasks();
     }, []);
 
     const statusChange = (taskId) => {
@@ -110,7 +113,7 @@ function RightPanel() {
                                                     style={{ backgroundColor: task.status === 'C' ? '#2BA24C' : '#D4B5B5' }}
                                                     onClick={() => statusChange(task.id)}
                                                 ></span>
-                                                {task.notes}
+                                                <div>{task.notes}</div>
                                             </div>
                                             <div className="sessionPomodoro">총 소요시간 : {task.pomodoros * 25}분</div>
                                         </div>
@@ -145,7 +148,7 @@ function RightPanel() {
                 <div className="vector" onClick={modifyAccount}></div>
             </div>
 
-            { showTaskAdd && <AddTask onClose={() => setShowTaskAdd(false)} /> }
+            { showTaskAdd && <AddTask onClose={() => setShowTaskAdd(false)} onAdd={reloadTasks} /> }
             { showAccount && <Account onClose={() => setShowAccount(false)} /> }
         </div>
     );

@@ -180,6 +180,7 @@
     font-size: 0.9vw;
     line-height: 18px;
     color: #807A7A;
+    height: 400px;
 }
 
 .down-arrow {
@@ -199,11 +200,10 @@
 }
 
 .taskPlus {
-    position: absolute;
+    position: relative;
     order: 4;
     width: 100%;
-    height: 10vh;
-    bottom: 0;
+    bottom: 5px;
 }
 
 .addTask {
@@ -284,6 +284,14 @@
     text-align: left;
     color: #472B2B;
     margin: 5px 10px 5px 10px;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+.sessionContent > div {
+    word-wrap: break-word;
+    white-space: normal;
+    flex: 1;
 }
 
 .sessionContent span {
@@ -313,6 +321,9 @@
 }
 
 .pagination {
-    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
 
