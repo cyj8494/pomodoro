@@ -7,6 +7,7 @@ function Center() {
     const [isStarted, setIsStarted] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [maxTime, setMaxTime] = useState(25);
+    const [currentTask, setCurrentTask] = useState('');
 
     useEffect(() => {
         let interval;
@@ -31,6 +32,32 @@ function Center() {
 
         return () => clearInterval(interval);
     }, [isStarted, isPaused, seconds]);
+
+    const fetchLocalStorage = () => {
+        const storedTasks = JSON.parse(localStorage.getItem('tasks') || "[]");
+        const activeTask = storedTasks.find(task => task.status === 'C');
+        if (activeTask) {
+            setCurrentTask(activeTask.notes);
+        }
+    };
+
+    useEffect(() => {
+        // 컴포넌트가 마운트될 때 localStorage에서 데이터를 불러옴
+        fetchLocalStorage();
+
+        const onStorageChange = (e) => {
+            if (e.key === 'tasks') { // 'tasks' 키에 대한 변경사항 확인
+                fetchLocalStorage();
+            }
+        };
+
+        window.addEventListener('storage', onStorageChange);
+
+        // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거
+        return () => {
+            window.removeEventListener('storage', onStorageChange);
+        };
+    }, []);
 
     const togglePauseRestart = () => {
         setIsPaused(!isPaused);
@@ -156,7 +183,7 @@ function Center() {
                 <div className="currentTaskTxt">Current task</div>
                 <div className="currentTask">
                     <div className="currentCheck-image"></div>
-                    <div className="taskContent">Read 10 more pages of my favorite book</div>
+                    <div className="taskContent">{currentTask}</div>
                     <div className="taskNumber">1 / 1</div>
                     <div className="taskImg"></div>
                 </div>

@@ -22,7 +22,8 @@ function AddTask({ onClose }) {
         const newTask = {
             id: getMaxId() + 1,
             notes: notes,
-            pomodoros: pomodoros
+            pomodoros: pomodoros,
+            status: 'U'
         };
 
         const updatedTasks = [...tasks, newTask];

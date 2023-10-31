@@ -16,9 +16,28 @@ function RightPanel() {
 
 
     useEffect(() => {
-        const storedTasks = JSON.parse(localStorage.getItem('tasks') || "[]"); // 'sessions'를 'tasks'로 변경
+        const storedTasks = JSON.parse(localStorage.getItem('tasks') || "[]");
+        setTasks(storedTasks.map(task => ({ ...task, status: sessionStorage.getItem(task.id) || 'U' })));
         setTasks(storedTasks);
     }, []);
+
+    const statusChange = (taskId) => {
+        setTasks(prevTasks => {
+            const newTasks = prevTasks.map(task => {
+                if (task.id === taskId) {
+                    const newStatus = task.status === 'U' ? 'C' : 'U';
+                    sessionStorage.setItem(task.id, newStatus);
+                    return { ...task, status: newStatus };
+                }
+                // 다른 모든 작업의 상태를 'U'로 설정
+                sessionStorage.setItem(task.id, 'U');
+                return { ...task, status: 'U' };
+            });
+            localStorage.setItem('tasks', JSON.stringify(newTasks));
+            return newTasks;
+        });
+        window.dispatchEvent(new Event('storage'));
+    };
 
     function addTask() {
         setShowTaskAdd(true);
@@ -70,25 +89,7 @@ function RightPanel() {
                     </span>
                     { expandedSection === 'completed' &&
                         <div className="hiddenContent">
-                            <div className="focus-box">
-                                <div className="record">
-                                    <div className="record-heading">
-                                        Today, you have focused for
-                                    </div>
-                                    <div className="record-details">
-                                        <div className="record-time">
-                                            <span className="large-number">50</span>
-                                            Minutes &&nbsp;
-                                            <span className="large-number">23</span>
-                                            Seconds
-                                        </div>
-                                        <div className="image-box">
-                                            <div className="times-two">2x</div>
-                                            <div className="image"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div> }
                 </div>
                 <div className="to-do">
@@ -103,14 +104,20 @@ function RightPanel() {
                                 {paginatedTasks.map(task => (
                                     <div className="hiddenContent" key={task.id}>
                                         <div className="task-box">
-                                            <div className="taskStatus">Uncompleted</div>
-                                            <div className="sessionContent">{task.notes}</div>
-                                            <div className="sessionPomodoro">{task.pomodoros}</div>
+                                            <div className="taskStatus">{task.status === 'C' ? 'Current Task' : 'Uncompleted'}</div>
+                                            <div className="sessionContent">
+                                                <span
+                                                    style={{ backgroundColor: task.status === 'C' ? '#2BA24C' : '#D4B5B5' }}
+                                                    onClick={() => statusChange(task.id)}
+                                                ></span>
+                                                {task.notes}
+                                            </div>
+                                            <div className="sessionPomodoro">총 소요시간 : {task.pomodoros * 25}분</div>
                                         </div>
                                     </div>
                                 ))}
 
-                                {tasks.length > itemsPerPage && (  // 태스크가 4개 이상일 때만 페이지네이션 컨트롤을 보여줍니다.
+                                {tasks.length > itemsPerPage && (  // 태스크가 4개 이상일 때만 페이징 처리 합니다.
                                     <div className="pagination">
                                         <button
                                             onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
