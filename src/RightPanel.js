@@ -32,14 +32,14 @@ function RightPanel({ currentTask, setCurrentTask }) {
                     const newStatus = task.status === 'U' ? 'C' : 'U';
                     sessionStorage.setItem(task.id, newStatus);
                     if (newStatus === 'C') {
-                        updatedCurrentTask = { ...task, status: newStatus }; // 상태 변경된 태스크를 업데이트합니다.
+                        updatedCurrentTask = { ...task, status: newStatus }; // 상태 변경된 태스크 업데이트
                     }
                     return { ...task, status: newStatus };
                 }
                 sessionStorage.setItem(task.id, 'U');
                 return { ...task, status: 'U' };
             });
-            setCurrentTask(updatedCurrentTask); // 여기서는 태스크 전체 객체를 업데이트하지 않고 상태만 업데이트합니다.
+            setCurrentTask(updatedCurrentTask); // 여기서는 태스크 전체 객체를 업데이트하지 않고 상태만 업데이트
             localStorage.setItem('tasks', JSON.stringify(newTasks));
             return newTasks;
         });

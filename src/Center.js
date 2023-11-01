@@ -8,6 +8,27 @@ function Center({ currentTask, setCurrentTask }) {
     const [isPaused, setIsPaused] = useState(false);
     const [maxTime, setMaxTime] = useState(25);
 
+    const toggleCurrentTaskStatus = () => {
+        if (currentTask && currentTask.status === 'C') {
+            const updatedTask = { ...currentTask, status: 'E' };
+
+            // localStorage에서 tasks를 불러와 업데이트합니다.
+            const storedTasks = JSON.parse(localStorage.getItem('tasks') || "[]");
+            const updatedTasks = storedTasks.map(task => {
+                if (task.id === currentTask.id) {
+                    return updatedTask;
+                }
+                return task;
+            });
+
+            // localStorage에 업데이트된 tasks를 저장합니다.
+            localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+
+            // 현재 태스크를 업데이트합니다.
+            setCurrentTask(updatedTask);
+        }
+    };
+
     useEffect(() => {
         let interval;
         if (isStarted && !isPaused) {
@@ -183,7 +204,8 @@ function Center({ currentTask, setCurrentTask }) {
                 <div className="currentTaskTxt">Current task</div>
                 {currentTask && currentTask.status === 'C' && (
                     <div className="currentTask">
-                        <div className="currentCheck-image"></div>
+                        <div className="currentCheck-image" style={{ backgroundColor: currentTask.status === 'C' ? '#2BA24C' : '#E66C6C' }}
+                             onClick={() => toggleCurrentTaskStatus()}></div>
                         <div className="taskContent">{currentTask.notes}</div>
                         <div className="taskNumber">1 / {currentTask.pomodoros}</div>
                     </div>
