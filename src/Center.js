@@ -12,7 +12,6 @@ function Center({ currentTask, setCurrentTask }) {
         if (currentTask && currentTask.status === 'C') {
             const updatedTask = { ...currentTask, status: 'E' };
 
-            // localStorage에서 tasks를 불러와 업데이트합니다.
             const storedTasks = JSON.parse(localStorage.getItem('tasks') || "[]");
             const updatedTasks = storedTasks.map(task => {
                 if (task.id === currentTask.id) {
@@ -21,11 +20,11 @@ function Center({ currentTask, setCurrentTask }) {
                 return task;
             });
 
-            // localStorage에 업데이트된 tasks를 저장합니다.
             localStorage.setItem('tasks', JSON.stringify(updatedTasks));
 
-            // 현재 태스크를 업데이트합니다.
             setCurrentTask(updatedTask);
+
+            window.dispatchEvent(new Event('storage'));
         }
     };
 

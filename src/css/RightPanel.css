@@ -2,10 +2,11 @@
 .rightPanel {
     position: relative;
     width: 25.7vw;
-    height: 100vh;
+    min-height: 100vh; /* 최소 높이를 100vh로 설정 */
     right: 0;
     top: 0;
     background: #F2F2F2;
+    overflow: hidden;
 }
 
 /* Side panel pick */
@@ -74,9 +75,11 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    max-width: 49vh;
+    max-width: 25.7vw; /* 부모 요소의 너비와 동일하게 설정 */
     margin: 0 auto;
     gap: 15px;
+    overflow-y: auto; /* 세로 스크롤 추가 */
+    max-height: calc(100vh - 8vh); /* .sidePanelPick 높이만큼 제한 */
 }
 
 /* Today's focus */

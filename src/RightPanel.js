@@ -11,18 +11,42 @@ function RightPanel({ currentTask, setCurrentTask }) {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 4;
 
-    // 현재 페이지에 따라 표시해야 할 태스크를 계산합니다.
-    const paginatedTasks = tasks.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
+    // 현재 페이지에 따라 표시해야 할 태스크 계산
+    const paginatedTasks = tasks
+        .filter(task => task.status !== 'E')
+        .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+    const [showCompleted, setShowCompleted] = useState(false);
 
     const reloadTasks = () => {
         const storedTasks = JSON.parse(localStorage.getItem('tasks') || "[]");
-        setTasks(storedTasks.map(task => ({ ...task, status: sessionStorage.getItem(task.id) || 'U' })));
+        const filteredTasks = storedTasks.filter(task => task.status !== 'E');
+        const updatedTasks = filteredTasks.map(task => {
+            const storedStatus = sessionStorage.getItem(task.id);
+            return { ...task, status: storedStatus ? storedStatus : task.status };
+        });
+        setTasks(updatedTasks);
+
+        // 현재 태스크의 상태 업데이트
+        if (currentTask && currentTask.id) {
+            const updatedCurrentTask = updatedTasks.find(task => task.id === currentTask.id);
+            if (updatedCurrentTask) {
+                setCurrentTask(updatedCurrentTask);
+            }
+        }
     };
 
     useEffect(() => {
         reloadTasks();
-    }, []);
+        const onStorageChange = (e) => {
+            if (e.key === 'tasks') {
+                reloadTasks();
+            }
+        };
+        window.addEventListener('storage', onStorageChange);
+        return () => {
+            window.removeEventListener('storage', onStorageChange);
+        };
+    }, [currentTask]);
 
     const statusChange = (taskId) => {
         setTasks(prevTasks => {
@@ -32,15 +56,20 @@ function RightPanel({ currentTask, setCurrentTask }) {
                     const newStatus = task.status === 'U' ? 'C' : 'U';
                     sessionStorage.setItem(task.id, newStatus);
                     if (newStatus === 'C') {
-                        updatedCurrentTask = { ...task, status: newStatus }; // 상태 변경된 태스크 업데이트
+                        updatedCurrentTask = { ...task, status: newStatus };
                     }
                     return { ...task, status: newStatus };
                 }
-                sessionStorage.setItem(task.id, 'U');
-                return { ...task, status: 'U' };
+
+                if (task.status !== 'E') {  // 'E' 상태인 태스크는 건드리지 않습니다.
+                    sessionStorage.setItem(task.id, 'U');
+                    return { ...task, status: 'U' };
+                }
+                return task;  // 'E' 상태인 태스크는 그대로 반환합니다.
             });
-            setCurrentTask(updatedCurrentTask); // 여기서는 태스크 전체 객체를 업데이트하지 않고 상태만 업데이트
-            localStorage.setItem('tasks', JSON.stringify(newTasks));
+
+            setCurrentTask(updatedCurrentTask);
+            localStorage.setItem('tasks', JSON.stringify(newTasks));  // 로컬 스토리지에 모든 태스크 상태 업데이트
             return newTasks;
         });
         window.dispatchEvent(new Event('storage'));
@@ -95,10 +124,12 @@ function RightPanel({ currentTask, setCurrentTask }) {
                         className={`down-arrow ${expandedSection === 'completed' ? 'up-arrow' : ''}`}
                         onClick={() => toggleSection('completed')}>
                     </span>
-                    { expandedSection === 'completed' &&
+                    {(expandedSection === 'completed' || showCompleted) &&
                         <div className="hiddenContent">
 
-                        </div> }
+                            //... content of the completed section
+                        </div>
+                    }
                 </div>
                 <div className="to-do">
                     To-do
@@ -125,7 +156,7 @@ function RightPanel({ currentTask, setCurrentTask }) {
                                     </div>
                                 ))}
 
-                                {tasks.length > itemsPerPage && (  // 태스크가 4개 이상일 때만 페이징 처리 합니다.
+                                {tasks.length > itemsPerPage && (  // 태스크가 4개 이상일 때만 페이징 처리
                                     <div className="pagination">
                                         <button
                                             onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
