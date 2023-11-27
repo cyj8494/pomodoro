@@ -3,12 +3,12 @@ import './css/Sign.css';
 import SignIn from './SignIn';
 import Arrow from './img/Arrow.svg';
 import Google from './img/Google.svg';
-<script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+import axios from 'axios';
 
 const SignUp = ({ onClose, onSignUp }) => {
-    const [fullName, setFullName] = useState('');
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [pwd, setPwd] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showSignIn, setShowSignIn] = useState(false);
 
@@ -18,7 +18,7 @@ const SignUp = ({ onClose, onSignUp }) => {
 
 
     const validateForm = () => {
-        if (fullName.trim() === '') {
+        if (name.trim() === '') {
             alert('이름을 입력해주세요.');
             return false;
         }
@@ -29,12 +29,12 @@ const SignUp = ({ onClose, onSignUp }) => {
             return false;
         }
 
-        if (password.length < 6) {
+        if (pwd.length < 6) {
             alert('6글자 이상 입력해주세요.');
             return false;
         }
 
-        if (password !== confirmPassword) {
+        if (pwd !== confirmPassword) {
             alert('비밀번호가 맞지 않습니다.');
             return false;
         }
@@ -46,19 +46,13 @@ const SignUp = ({ onClose, onSignUp }) => {
         if (!validateForm()) return;
 
         try {
-            const response = await fetch('api주소', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    fullName,
-                    email,
-                    password,
-                }),
+            const response = await axios.post('/user-service/users', {
+                name,
+                email,
+                pwd,
             });
 
-            const data = await response.json();
+            const data = response.data;
 
             if (data.success) {
                 alert('회원가입에 성공했습니다.');
@@ -78,8 +72,8 @@ const SignUp = ({ onClose, onSignUp }) => {
                 <input
                     type="text"
                     placeholder="이름"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                 />
                 <input
                     type="email"
@@ -90,8 +84,8 @@ const SignUp = ({ onClose, onSignUp }) => {
                 <input
                     type="password"
                     placeholder="비밀번호"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={pwd}
+                    onChange={(e) => setPwd(e.target.value)}
                 />
                 <input
                     type="password"
@@ -106,11 +100,11 @@ const SignUp = ({ onClose, onSignUp }) => {
                 </button>
 
 
-                <div className="or">OR</div>
+                {/*<div className="or">OR</div>
                 <button className="google-button">
                     <img src={Google} alt="Google" className="google-icon" />
                     Google로 로그인
-                </button>
+                </button>*/}
                 <div className="askAccount">
                     계정이 이미 있습니까? <span onClick={() => setShowSignIn(true)}>Login</span>
                 </div>

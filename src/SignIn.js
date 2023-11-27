@@ -58,11 +58,11 @@ function SignIn({ onSignUp, onClose }) {
                     <img src={Arrow} alt="Arrow" className="arrow-icon" />
                 </button>
 
-                <div className="or">OR</div>
+                {/*<div className="or">OR</div>
                 <button className="google-button">
                     <img src={Google} alt="Google" className="google-icon" />
                     Google로 로그인
-                </button>
+                </button>*/}
                 <div className="askAccount">
                     계정이 없습니까? <span onClick={handleSignUpClick}>회원가입</span>
                 </div>

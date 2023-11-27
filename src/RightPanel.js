@@ -21,7 +21,7 @@ function RightPanel({ currentTask, setCurrentTask }) {
         const storedTasks = JSON.parse(localStorage.getItem('tasks') || "[]");
         const filteredTasks = storedTasks.filter(task => task.status !== 'E');
         const updatedTasks = filteredTasks.map(task => {
-            const storedStatus = sessionStorage.getItem(task.id);
+            const storedStatus = localStorage.getItem(task.id); // Change here
             return { ...task, status: storedStatus ? storedStatus : task.status };
         });
         setTasks(updatedTasks);
@@ -29,7 +29,7 @@ function RightPanel({ currentTask, setCurrentTask }) {
         // 현재 태스크의 상태 업데이트
         if (currentTask && currentTask.id) {
             const updatedCurrentTask = updatedTasks.find(task => task.id === currentTask.id);
-            if (updatedCurrentTask) {
+            if (updatedCurrentTask && updatedCurrentTask.status !== currentTask.status) {
                 setCurrentTask(updatedCurrentTask);
             }
         }
@@ -54,22 +54,22 @@ function RightPanel({ currentTask, setCurrentTask }) {
             const newTasks = prevTasks.map(task => {
                 if (task.id === taskId) {
                     const newStatus = task.status === 'U' ? 'C' : 'U';
-                    sessionStorage.setItem(task.id, newStatus);
+                    localStorage.setItem(task.id, newStatus); // Change here
                     if (newStatus === 'C') {
                         updatedCurrentTask = { ...task, status: newStatus };
                     }
                     return { ...task, status: newStatus };
                 }
 
-                if (task.status !== 'E') {  // 'E' 상태인 태스크는 건드리지 않습니다.
-                    sessionStorage.setItem(task.id, 'U');
+                if (task.status !== 'E') {
+                    localStorage.setItem(task.id, 'U'); // Change here
                     return { ...task, status: 'U' };
                 }
-                return task;  // 'E' 상태인 태스크는 그대로 반환합니다.
+                return task;
             });
 
             setCurrentTask(updatedCurrentTask);
-            localStorage.setItem('tasks', JSON.stringify(newTasks));  // 로컬 스토리지에 모든 태스크 상태 업데이트
+            localStorage.setItem('tasks', JSON.stringify(newTasks));
             return newTasks;
         });
         window.dispatchEvent(new Event('storage'));
