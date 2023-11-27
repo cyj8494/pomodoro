@@ -216,7 +216,7 @@
     position: absolute;
     width: 27px;
     height: 27px;
-    left: 2.5vw;
+    left: 2.2vw;
     top: 4vh;
     background-image: url("../img/Plus.svg");
     background-repeat: no-repeat;
@@ -225,7 +225,7 @@
     cursor: pointer;
 }
 
-.vector {
+/*.vector {
     position: absolute;
     width: 27px;
     height: 27px;
@@ -235,7 +235,7 @@
     background-repeat: no-repeat;
     background-size: 80%;
     background-position: center;
-}
+}*/
 
 .hiddenDiv {
     position: relative;

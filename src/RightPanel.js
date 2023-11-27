@@ -5,7 +5,6 @@ import Account from './Account';
 
 function RightPanel({ currentTask, setCurrentTask }) {
     const [showTaskAdd, setShowTaskAdd] = useState(false);
-    const [showAccount, setShowAccount] = useState(false);
     const [expandedSection, setExpandedSection] = useState(null);
     const [tasks, setTasks] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -78,9 +77,6 @@ function RightPanel({ currentTask, setCurrentTask }) {
 
     function addTask() {
         setShowTaskAdd(true);
-    }
-    function modifyAccount() {
-        setShowAccount(true);
     }
     function toggleSection(section) {
         if (expandedSection === section) {
@@ -181,11 +177,9 @@ function RightPanel({ currentTask, setCurrentTask }) {
             </div>
             <div className="taskPlus">
                 <div className="addTask" onClick={addTask}></div>
-                <div className="vector" onClick={modifyAccount}></div>
             </div>
 
             { showTaskAdd && <AddTask onClose={() => setShowTaskAdd(false)} onAdd={reloadTasks} /> }
-            { showAccount && <Account onClose={() => setShowAccount(false)} /> }
         </div>
     );
 }
