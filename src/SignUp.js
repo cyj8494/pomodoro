@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './css/Sign.css';
+import './css/PopUp.css';
 import SignIn from './SignIn';
 import Arrow from './img/Arrow.svg';
-import Google from './img/Google.svg';
+/*import Google from './img/Google.svg';*/
 import axios from 'axios';
 
 const SignUp = ({ onClose, onSignUp }) => {

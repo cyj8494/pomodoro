@@ -1,0 +1,249 @@
+textarea {
+    resize: none;
+}
+
+.taskContainer {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+}
+
+.taskQuestion {
+    position: relative;
+    order: -1;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 44px;
+    display: flex;
+    align-items: center;
+
+    color: #D4B5B5;
+}
+
+.pomodoroContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+}
+
+.timeControls {
+    order: 2;
+    display: flex;
+    align-items: center;
+    width: 77px;
+    height: 30px;
+    box-sizing: content-box;
+    background: #F2F2F2;
+    border: 1px solid #D4B5B5;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.pomodoroCount {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1vw;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 30px;
+    margin-inside : 50%;
+    background-color: #F2F2F2;
+    color: #807A7A;
+}
+
+.minusButton {
+    width: 20px;
+    height: 30px;
+    background: #FFFFFF;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px 0 0 10px;
+}
+
+.plusButton {
+    width: 20px;
+    height: 30px;
+    background: #FFFFFF;
+    cursor: pointer;
+    border: none;
+    border-radius: 0 10px 10px 0;
+}
+
+.notesInput {
+    box-sizing: border-box;
+
+    height: 9vh;
+    left: calc(50% - 590px/2);
+
+    border: 1px solid #D4B5B5;
+    border-radius: 13px;
+    padding-left: 10px;
+    padding-top: 7px;
+}
+
+.notesInput::placeholder {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    color: #D4B5B5;
+}
+
+.taskAddButtons {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.8vw;
+}
+
+.cancelButton {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1vw;
+    line-height: 38px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #D4B5B5;
+    border: none;
+    background: #FFFFFF;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    cursor: pointer;
+}
+
+.addButton {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1vw;
+    line-height: 38px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    box-shadow: 0px 4px 4px rgba(169, 142, 142, 0.4);
+    border-radius: 12px;
+    background: #E66C6C;
+    border: none;
+    color: #FFFFFF;
+    padding-left: 1.2vw;
+    padding-right: 1.2vw;
+    cursor: pointer;
+}
+
+.profileIcon1 {
+    width: 60px;
+    height: 60px;
+    background: #E66C6C;
+    border-radius: 100px;
+    background-image: url('../img/User06.svg');
+    background-repeat: no-repeat;
+    background-size: 75%;
+    background-position: center 100%;
+}
+
+.profileIcon2 {
+    width: 60px;
+    height: 60px;
+    background: #E66C6C;
+    border-radius: 100px;
+    background-image: url('../img/User06.svg');
+    background-repeat: no-repeat;
+    background-size: 75%;
+    background-position: center 100%;
+}
+
+.profileIcon3 {
+    width: 60px;
+    height: 60px;
+    background: #E66C6C;
+    border-radius: 100px;
+    background-image: url('../img/User06.svg');
+    background-repeat: no-repeat;
+    background-size: 75%;
+    background-position: center 100%;
+}
+
+.nameInput {
+    width: 100%;
+    padding: 8px 0;
+    border: none;
+    border-bottom: 1px solid #D4B5B5;
+    font-size: 0.9vw;
+    line-height: 32px;
+    background: transparent;
+    outline: none;
+    color: #000000;
+    letter-spacing: 1px;
+}
+
+.mail {
+    text-align: left;
+    color: #807A7A;
+    font-size: 1vw;
+    letter-spacing: 1px;
+}
+
+.settingContainer {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.settingMenu {
+    text-align: left;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+}
+
+.timerSetting {
+    color : #807A7A;
+}
+
+.toggle {
+    width: 2vw;
+    height: 4vh;
+    background-image: url('../img/ToggleOn.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.right-arrow {
+    width: 35px;
+    height: 35px;
+    background-image: url('../img/right-arrow.png');
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center 50%;
+}
+
+.left-arrow {
+    width: 35px;
+    height: 35px;
+    background-image: url('../img/left-arrow.png');
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center 50%;
+}

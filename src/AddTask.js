@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './css/PopUp.css';
+import './css/Datail.css'
 
 function AddTask({ onClose, onAdd }) {
     const [pomodoros, setPomodoros] = useState(1);

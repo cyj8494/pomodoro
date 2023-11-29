@@ -74,6 +74,7 @@
 .container {
     position: relative;
     display: flex;
+    width: 95%;
     flex-direction: column;
     max-width: 25.7vw; /* 부모 요소의 너비와 동일하게 설정 */
     margin: 0 auto;

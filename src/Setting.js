@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './css/PopUp.css';
+import './css/detail.css';
 import axios from 'axios';
 
 function Setting({ onClose }) {

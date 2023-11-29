@@ -1,249 +1,321 @@
-textarea {
-    resize: none;
+body.overflow-hidden {
+    overflow: hidden;
 }
 
-.taskContainer {
-    width: 360px;
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    flex-direction: column;
-    gap: 30px;
-
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
-.taskQuestion {
+.popup-inner {
+    width: 420px;
+    max-height: 720px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    background-color: white;
     position: relative;
-    order: -1;
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 23px;
-    line-height: 44px;
-    display: flex;
-    align-items: center;
-
-    color: #D4B5B5;
-}
-
-.pomodoroContainer {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 3vw;
-}
-
-.timeControls {
-    order: 2;
-    display: flex;
-    align-items: center;
-    width: 77px;
-    height: 30px;
-    box-sizing: content-box;
-    background: #F2F2F2;
-    border: 1px solid #D4B5B5;
-    border-radius: 8px;
+    z-index: 2000;
     text-align: center;
+    display: grid;
+    place-items: center;
 }
 
-.pomodoroCount {
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    line-height: 25px;
+    text-align: center;
+    border: none;
+    background: transparent;
     font-family: 'Outfit';
-    font-style: normal;
+    font-size: 16px;
+    color: black;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 50%;
+    background-image: url('../img/close.svg');
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-family: 'Outfit';
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 50%;
+    height: 3.2vh;
+    padding: 10px 40px 10px 40px;
+    margin-bottom: 20px;
+    border: 1px solid #D4B5B5;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+
+}
+
+input[type="text"] {
+    background-image: url('../img/Profile.svg');
+    background-size: 3%;
+}
+
+input[type="email"] {
+    background-image: url('../img/Mail.svg');
+    background-size: 4%;
+}
+
+input[type="password"] {
+    background-image: url('../img/Password.svg');
+    background-size: 4%;
+}
+
+.signUp-button {
+
+    width: 45%;
+    height: 6vh;
+    background: #E66C6C;
+    box-shadow: 15px 0px 30px rgba(237, 215, 215, 0.4);
+    border-radius: 12px;
+    padding: 15px;
+    border: none;
+
+    font-family: Outfit;
+    color: white;
+    font-size: 14px;
     font-weight: 400;
-    font-size: 1vw;
-    line-height: 23px;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+
+    cursor: pointer;
+    margin-bottom: 20px;
+    align-items: center;
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+
+.google-button {
+    width: 65%;
+    height: 7vh;
+    background: #FFFFFF;
+    box-shadow: 15px 0px 30px rgba(237, 215, 215, 0.4);
+    border-radius: 12px;
+    padding: 15px;
+    border: none;
+
+    font-family: Outfit;
+    color: #807A7A;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+
+    cursor: pointer;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.arrow-icon {
+    height: 1.5vw;
+    width: 1.5vw;
+    margin-left: auto;
+    padding-left: 0;
+    vertical-align: middle;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.google-icon {
+    height: 1.5vw;
+    width: 1.5vw;
+    margin-right: 2vw;
+    margin-bottom: 1vh;
+    vertical-align: middle;
+}
+
+.or {
+    font-family: Outfit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 34px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #807A7A;
+}
+
+.askAccount {
+    font-family: Outfit;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+    color : #807A7A;
+    margin-top: 1vh;
+}
+
+.askAccount > span {
+    color : #E66C6C;
+    cursor: pointer;
+}
+
+div > button:not(.close-btn) {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+div > button:nth-child(2) {
+    margin-right: 0;
+}
+
+/* ranking */
+
+.myRank {
+    width: 85%;
+    height: 120px;
+    background: #F2F2F2;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.myRank > div {
+    width: 80%;
+    height: 80%;
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: center;
-    flex-shrink: 0;
-    width: 38px;
-    height: 30px;
-    margin-inside : 50%;
-    background-color: #F2F2F2;
-    color: #807A7A;
 }
 
-.minusButton {
-    width: 20px;
-    height: 30px;
+.profileIcon {
+    width: 50px;
+    height: 50px;
     background: #FFFFFF;
-    cursor: pointer;
-    border: none;
-    border-radius: 10px 0 0 10px;
+    border-radius: 100px;
+    background-image: url('../img/Profile icon.svg');
+    background-repeat: no-repeat;
+    background-size: 65%;
+    background-position: center 100%;
+    margin-right: 30px;
 }
 
-.plusButton {
-    width: 20px;
-    height: 30px;
-    background: #FFFFFF;
-    cursor: pointer;
-    border: none;
-    border-radius: 0 10px 10px 0;
-}
-
-.notesInput {
-    box-sizing: border-box;
-
-    height: 9vh;
-    left: calc(50% - 590px/2);
-
-    border: 1px solid #D4B5B5;
-    border-radius: 13px;
-    padding-left: 10px;
-    padding-top: 7px;
-}
-
-.notesInput::placeholder {
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 32px;
-    display: flex;
-    align-items: center;
-    color: #D4B5B5;
-}
-
-.taskAddButtons {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 0.8vw;
-}
-
-.cancelButton {
+.userNm {
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 500;
-    font-size: 1.1vw;
-    line-height: 38px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #D4B5B5;
-    border: none;
-    background: #FFFFFF;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    cursor: pointer;
-}
-
-.addButton {
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1.1vw;
-    line-height: 38px;
-    /* identical to box height */
-    display: flex;
-    align-items: center;
-    text-align: center;
-
-    box-shadow: 0px 4px 4px rgba(169, 142, 142, 0.4);
-    border-radius: 12px;
-    background: #E66C6C;
-    border: none;
-    color: #FFFFFF;
-    padding-left: 1.2vw;
-    padding-right: 1.2vw;
-    cursor: pointer;
-}
-
-.profileIcon1 {
-    width: 60px;
-    height: 60px;
-    background: #E66C6C;
-    border-radius: 100px;
-    background-image: url('../img/User06.svg');
-    background-repeat: no-repeat;
-    background-size: 75%;
-    background-position: center 100%;
-}
-
-.profileIcon2 {
-    width: 60px;
-    height: 60px;
-    background: #E66C6C;
-    border-radius: 100px;
-    background-image: url('../img/User06.svg');
-    background-repeat: no-repeat;
-    background-size: 75%;
-    background-position: center 100%;
-}
-
-.profileIcon3 {
-    width: 60px;
-    height: 60px;
-    background: #E66C6C;
-    border-radius: 100px;
-    background-image: url('../img/User06.svg');
-    background-repeat: no-repeat;
-    background-size: 75%;
-    background-position: center 100%;
-}
-
-.nameInput {
-    width: 100%;
-    padding: 8px 0;
-    border: none;
-    border-bottom: 1px solid #D4B5B5;
-    font-size: 0.9vw;
+    font-size: 17px;
     line-height: 32px;
-    background: transparent;
-    outline: none;
-    color: #000000;
-    letter-spacing: 1px;
-}
-
-.mail {
-    text-align: left;
-    color: #807A7A;
-    font-size: 1vw;
-    letter-spacing: 1px;
-}
-
-.settingContainer {
-    width: 360px;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-
+    align-items: center;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    color: #5C3737;
+    padding-top: 20px;
 }
 
-.settingMenu {
-    text-align: left;
-    font-family: 'Outfit';
+.rankNum {
     font-style: normal;
+    font-size: 14px;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding-top: 10px;
+    color: #E66C6C;
 }
 
-.timerSetting {
-    color : #807A7A;
+.minutes {
+    font-size: 12px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    color: #807A7A;
 }
 
-.toggle {
-    width: 2vw;
-    height: 4vh;
-    background-image: url('../img/ToggleOn.svg');
+.allRank {
+    width: 85%;
+    height: 50px;
+    background: #F2F2F2;
+    border-radius: 8px;
+
+}
+
+.allRank > div {
+    width: 90%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.allRankNum {
+    font-family: Inter;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0em;
+    color: #556EFC;
+    margin-left: 20px;
+    margin-right: 25px;
+}
+
+.rankProfile {
+    width: 25px;
+    height: 25px;
+    background: #FFFFFF;
+    border-radius: 100px;
+    background-image: url('../img/Profile icon.svg');
     background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
+    background-size: 65%;
+    background-position: center 100%;
+    margin-right: 30px;
 }
 
-.right-arrow {
-    width: 35px;
-    height: 35px;
-    background-image: url('../img/right-arrow.png');
-    background-repeat: no-repeat;
-    background-size: 80%;
-    background-position: center 50%;
+.allRankName {
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: right;
+    color: #2C2929;
 }
 
-.left-arrow {
-    width: 35px;
-    height: 35px;
-    background-image: url('../img/left-arrow.png');
-    background-repeat: no-repeat;
-    background-size: 80%;
-    background-position: center 50%;
+.allRankMinutes {
+    margin-left: auto;
+    font-size: 12px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #807A7A;
 }
+
