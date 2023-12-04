@@ -11,7 +11,7 @@ function SignIn({ onSignUp, onClose }) {
     const [password, setPassword] = useState('');
 
     const login = () => {
-        axios.get('/user-service/users')
+        axios.post('/user-service/users')
             .then(response => {
                 if (response.data.success) {
                     alert('로그인에 성공했습니다!');

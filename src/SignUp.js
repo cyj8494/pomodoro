@@ -52,15 +52,15 @@ const SignUp = ({ onClose, onSignUp }) => {
                 pwd,
             });
 
-            const data = response.data;
-
-            if (data.success) {
+            // 상태 코드가 201인 경우 성공 메시지 표시
+            if (response.status === 201) {
                 alert('회원가입에 성공했습니다.');
                 onClose();
             } else {
-                alert(data.message || '회원가입에 실패했습니다.');
+                alert(response.data.message || '회원가입에 실패했습니다.');
             }
         } catch (error) {
+            // 오류 처리
             alert('Error occurred: ' + error.message);
         }
     };
