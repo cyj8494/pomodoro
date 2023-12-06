@@ -46,7 +46,7 @@ const SignUp = ({ onClose, onSignUp }) => {
         if (!validateForm()) return;
 
         try {
-            const response = await axios.post('/user-service/users', {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}//user-service/users`, {
                 name,
                 email,
                 pwd,
