@@ -34,6 +34,14 @@ const SignUp = ({ onClose, onSignUp }) => {
             return false;
         }
 
+        const containsLetter = /[a-zA-Z]/.test(pwd);
+        const containsNumber = /\d/.test(pwd);
+
+        if (!containsLetter || !containsNumber) {
+            alert('비밀번호는 숫자와 문자를 포함하여야 합니다.');
+            return false;
+        }
+
         if (pwd !== confirmPassword) {
             alert('비밀번호가 맞지 않습니다.');
             return false;

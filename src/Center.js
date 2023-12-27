@@ -200,6 +200,7 @@ function Center({ currentTask, setCurrentTask }) {
                         </>
                     )}
                 </div>
+                <div className="taskDiv">
                 <div className="currentTaskTxt">Current task</div>
                 {currentTask && currentTask.status === 'C' && (
                     <div className="currentTask">
@@ -209,6 +210,7 @@ function Center({ currentTask, setCurrentTask }) {
                         <div className="taskNumber">1 / {currentTask.pomodoros}</div>
                     </div>
                 )}
+                </div>
             </div>
         </div>
     );

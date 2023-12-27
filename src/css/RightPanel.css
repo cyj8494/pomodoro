@@ -215,8 +215,8 @@
     border: 3px solid #E66C6C;
     border-radius: 50px;
     position: absolute;
-    width: 27px;
-    height: 27px;
+    width: 2vw;
+    height: 2vw;
     left: 2.2vw;
     top: 4vh;
     background-image: url("../img/Plus.svg");

@@ -58,9 +58,9 @@ function LeftPanel() {
             </div>
             */}
             <div className="logout">
-                <img src={logout} alt="logout" onClick={openProfile} />
+                <img src={logout} alt="logout"  />
             </div>
-            {showProfile && <Profile onClose={() => setShowProfile(false)} />}
+
         </div>
     );
 }

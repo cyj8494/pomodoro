@@ -1,3 +1,17 @@
+@media only screen and (max-width: 480px) {
+    .leftPanel {
+        display: none;
+    }
+
+    .rightPanel {
+        display: none;
+    }
+
+    .center-box {
+        width: 100%;
+    }
+}
+
 .body {
     position: relative;
     display: flex;
@@ -6,12 +20,6 @@
     height: 100%;
     transform-origin: top left;
     background: #FFFFFF;
-}
-
-@media screen and (max-width: 1800px) {
-    .container {
-        transform: scale(0.9); /* 확대/축소 비율 */
-    }
 }
 
 /* Left panel */
@@ -80,5 +88,6 @@
 .rank {
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 

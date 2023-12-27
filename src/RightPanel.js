@@ -132,7 +132,7 @@ function RightPanel({ currentTask, setCurrentTask }) {
                     <span
                         className={`down-arrow ${expandedSection === 'todo' ? 'up-arrow' : ''}`}
                         onClick={() => toggleSection('todo')}>
-    </span>
+                    </span>
                     <div className="hiddenDiv">
                         { expandedSection === 'todo' && (
                             <>

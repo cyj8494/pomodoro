@@ -4,6 +4,7 @@ import SignUp from './SignUp';
 import Arrow from './img/Arrow.svg';
 /*import Google from './img/Google.svg';*/
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 function SignIn({ onSignUp, onClose }) {
 
@@ -11,16 +12,29 @@ function SignIn({ onSignUp, onClose }) {
     const [password, setPassword] = useState('');
 
     const login = () => {
-        axios.post('/user-service/users')
-            .then(response => {
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/user-service/users`, {
+                params: {
+                    email: email,
+                    pwd: password,
+                },
+            })
+            .then((response) => {
                 if (response.data.success) {
+                    const accessToken = response.headers['token'];
+                    const refreshToken = response.headers['refresh-token'];
+
+                    // 액세스 토큰과 리프레시 토큰을 쿠키에 저장
+                    Cookies.set('accessToken', accessToken);
+                    Cookies.set('refreshToken', refreshToken);
+
                     alert('로그인에 성공했습니다!');
                 } else {
                     alert('로그인에 실패했습니다. 다시 시도해주세요!');
                     console.log(response.data);
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 alert('로그인에 실패했습니다. 다시 시도해주세요.');
                 console.error(error);
             });
