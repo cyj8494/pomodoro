@@ -13,7 +13,7 @@ function SignIn({ onSignUp, onClose }) {
 
     const login = () => {
         axios
-            .get(`${process.env.REACT_APP_API_URL}/user-service/users`, {
+            .post(`${process.env.REACT_APP_API_URL}/user-service/login`, {
                 params: {
                     email: email,
                     pwd: password,
