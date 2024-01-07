@@ -7,12 +7,34 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Ranking from './Ranking';
 import Profile from './Profile';
+import axios from 'axios';
 
 function LeftPanel() {
     const [showSignIn, setShowSignIn] = useState(false);
     const [showSignUp, setShowSignUp] = useState(false);
     const [showRanking, setShowRanking] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
+
+    const handleLogout = () => {
+        const accessToken = localStorage.getItem('accessToken');
+        if (accessToken) {
+            axios.get(`${process.env.REACT_APP_API_URL}/user-service/users`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            })
+                .then(response => {
+                    // 로그아웃 성공 시의 처리
+                    console.log('조회 성공', response);
+                    
+                })
+                .catch(error => {
+                    // 오류 처리
+                    console.error('조회 실패', error);
+                });
+        }
+    };
+
 
     const handleOpenSignIn = () => {
         setShowSignIn(true);
@@ -53,12 +75,9 @@ function LeftPanel() {
                 </div>
             </div>
             {showRanking && <Ranking onClose={() => setShowRanking(false)} />}
-           {/* <div className="setting">
-                <img src={setting} alt="setting" onClick={openSetting} />
-            </div>
-            */}
+
             <div className="logout">
-                <img src={logout} alt="logout"  />
+                <img src={logout} alt="logout" onClick={handleLogout} />
             </div>
 
         </div>
