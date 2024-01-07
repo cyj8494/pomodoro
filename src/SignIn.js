@@ -20,8 +20,10 @@ function SignIn({ onSignUp, onClose }) {
             .then((response) => {
                 if (response.status === 200) {
                     const accessToken = response.headers['Token'];
-                    console.log('accessToken');
+                    const userId = response.headers['userId'];
+                    console.log('response.headers');
                     localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('userId', userId);
 
                     alert('로그인에 성공했습니다!');
                 } else {
