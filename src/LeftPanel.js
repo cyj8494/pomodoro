@@ -24,8 +24,7 @@ function LeftPanel() {
                 }
             })
                 .then(response => {
-                    // 로그아웃 성공 시의 처리
-                    console.log('조회 성공', response);
+                    console.log('조회 성공');
                     
                 })
                 .catch(error => {
