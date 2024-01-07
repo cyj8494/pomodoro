@@ -28,61 +28,29 @@ function Center({ currentTask, setCurrentTask }) {
         }
     };
 
-
-        useEffect(() => {
-            let interval;
-            if (isStarted && !isPaused) {
+    useEffect(() => {
+        let interval;
+        if (isStarted && !isPaused) {
+            if (seconds > 0) {
                 interval = setInterval(() => {
                     setSeconds(seconds => seconds - 1);
                 }, 1000);
-                if (seconds === 0) {
-                    if (minutes === 0) {
-                        clearInterval(interval);
-                        setIsStarted(false);
-
-                        if (maxTime === 25) {
-                            sendPomodoroCompletion();
-                        }
-
-                        resetTimer(25);
-                    } else {
-                        setMinutes(minutes => minutes - 1);
-                        setSeconds(59);
-                    }
+            } else if (seconds === 0) {
+                if (minutes === 0) {
+                    clearInterval(interval);
+                    setIsStarted(false);  // Start 버튼만 나오도록
+                    resetTimer(25);       // 기본값 25:00으로 재설정
+                } else {
+                    setMinutes(minutes => minutes - 1);
+                    setSeconds(59);
                 }
-            } else {
-                clearInterval(interval);
             }
-            return () => clearInterval(interval);
-        }, [isStarted, isPaused, seconds, minutes]);
+        } else {
+            clearInterval(interval);
+        }
 
-        const sendPomodoroCompletion = async () => {
-            const email = localStorage.getItem('email');
-            const count = 1;
-
-            if(email) {
-                try {
-                    const response = await fetch(`${process.env.REACT_APP_API_URL}/user-service/time`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ email, count }),
-                        credentials: 'include',
-                    });
-
-                    if(response.ok) {
-                        console.log("Data sent successfully");
-                    } else {
-                        console.error("Failed to send data");
-                    }
-                } catch (error) {
-                    console.error("Error sending data", error);
-                }
-            } else {
-                console.error("No email found in localStorage");
-            }
-        };
+        return () => clearInterval(interval);
+    }, [isStarted, isPaused, seconds]);
 
     const fetchLocalStorage = () => {
         const storedTasks = JSON.parse(localStorage.getItem('tasks') || "[]");
@@ -162,6 +130,25 @@ function Center({ currentTask, setCurrentTask }) {
                 default:
                     setPomodoro();
             }
+        }
+
+        // 로컬 스토리지에서 이메일 가져오기
+        const email = localStorage.getItem('email');
+
+        // 이메일이 존재하고 타이머가 시작될 때만 POST 요청 보내기
+        if (email) {
+            axios.post(`${process.env.REACT_APP_API_URL}/user-service/time`, {
+                email: email,
+                count: 1
+            })
+                .then(response => {
+                    // 요청이 성공했을 때의 로직
+                    console.log('Time sent successfully', response);
+                })
+                .catch(error => {
+                    // 요청이 실패했을 때의 로직
+                    console.error('Error sending time', error);
+                });
         }
     };
 

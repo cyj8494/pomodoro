@@ -23,11 +23,7 @@ function SignIn({ onSignUp, onClose }) {
                     const userId = response.headers['userId'];
 
                     localStorage.setItem('accessToken', accessToken);
-                    localStorage.setItem('userId', userId);
-
-                    console.log(response.headers);
-                    console.log(userId);
-                    console.log(accessToken);
+                    localStorage.setItem('email', email);
 
                     onClose();
 
