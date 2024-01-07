@@ -14,10 +14,8 @@ function SignIn({ onSignUp, onClose }) {
     const login = () => {
         axios
             .post(`${process.env.REACT_APP_API_URL}/user-service/login`, {
-                params: {
-                    email: email,
-                    pwd: password,
-                },
+                email: email,
+                pwd: password,
             })
             .then((response) => {
                 if (response.data.success) {
