@@ -4,7 +4,7 @@ import SignUp from './SignUp';
 import Arrow from './img/Arrow.svg';
 /*import Google from './img/Google.svg';*/
 import axios from 'axios';
-import Cookies from 'js-cookie';
+
 
 function SignIn({ onSignUp, onClose }) {
 
@@ -22,11 +22,8 @@ function SignIn({ onSignUp, onClose }) {
             .then((response) => {
                 if (response.data.success) {
                     const accessToken = response.headers['token'];
-                    const refreshToken = response.headers['refresh-token'];
 
-                    // 액세스 토큰과 리프레시 토큰을 쿠키에 저장
-                    Cookies.set('accessToken', accessToken);
-                    Cookies.set('refreshToken', refreshToken);
+                    localStorage.setItem('accessToken', accessToken);
 
                     alert('로그인에 성공했습니다!');
                 } else {
