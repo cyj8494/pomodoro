@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './css/Center.css';
+import axios from 'axios';
 
 function Center({ currentTask, setCurrentTask }) {
     const [minutes, setMinutes] = useState(25);
