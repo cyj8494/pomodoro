@@ -145,7 +145,7 @@ function Center({ currentTask, setCurrentTask }) {
                 .then(response => {
                     // 요청이 성공했을 때의 로직
                     if (response.status === 201) {
-                        console.log('Time sent successfully', response);
+                        console.log('Time sent successfully');
                     } else {
                         console.log(response.data);
                     }
