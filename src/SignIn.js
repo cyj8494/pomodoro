@@ -25,7 +25,7 @@ function SignIn({ onSignUp, onClose }) {
                     localStorage.setItem('accessToken', accessToken);
                     localStorage.setItem('userId', userId);
 
-                    console.dir(response.headers);
+                    console.log(response.headers);
 
                     onClose();
 
