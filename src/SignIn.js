@@ -18,7 +18,7 @@ function SignIn({ onSignUp, onClose }) {
                 pwd: password,
             })
             .then((response) => {
-                if (response.data.success) {
+                if (response.status === 200) {
                     const accessToken = response.headers['token'];
 
                     localStorage.setItem('accessToken', accessToken);
