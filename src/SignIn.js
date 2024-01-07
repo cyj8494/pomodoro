@@ -19,13 +19,13 @@ function SignIn({ onSignUp, onClose }) {
             })
             .then((response) => {
                 if (response.status === 200) {
-                    const accessToken = response.headers['Token'];
+                    const accessToken = response.headers['token'];
                     const userId = response.headers['userId'];
 
                     localStorage.setItem('accessToken', accessToken);
                     localStorage.setItem('userId', userId);
 
-                    console.log('response.headers');
+                    console.dir('response.headers');
 
                     onClose();
 
