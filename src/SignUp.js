@@ -68,8 +68,13 @@ const SignUp = ({ onClose, onSignUp }) => {
                 alert(response.data.message || '회원가입에 실패했습니다.');
             }
         } catch (error) {
-            // 오류 처리
-            alert('Error occurred: ' + error.message);
+            // 오류 상태 코드가 409인 경우 특정 메시지 표시
+            if (error.response && error.response.status === 409) {
+                alert('이메일이 중복되었습니다. 다른 이메일을 사용해주세요.');
+            } else {
+                // 그 외의 오류에 대한 일반적인 처리
+                alert('Error occurred: ' + error.message);
+            }
         }
     };
 

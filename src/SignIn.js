@@ -38,13 +38,8 @@ function SignIn({ onSignUp, onClose }) {
                 }
             })
             .catch((error) => {
-                if (error.response && error.response.status === 409) {
-                    alert('이메일이 중복되었습니다. 다른 이메일을 사용해주세요.');
-                } else {
-                    // 다른 모든 오류에 대한 일반적인 처리
-                    alert('로그인에 실패했습니다. 다시 시도해주세요.');
-                    console.error(error);
-                }
+                alert('로그인에 실패했습니다. 다시 시도해주세요.');
+                console.error(error);
             });
     };
 
