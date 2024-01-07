@@ -123,7 +123,6 @@ function RightPanel({ currentTask, setCurrentTask }) {
                     {(expandedSection === 'completed' || showCompleted) &&
                         <div className="hiddenContent">
 
-                            //... content of the completed section
                         </div>
                     }
                 </div>
