@@ -21,9 +21,13 @@ function SignIn({ onSignUp, onClose }) {
                 if (response.status === 200) {
                     const accessToken = response.headers['Token'];
                     const userId = response.headers['userId'];
-                    console.log('response.headers');
+
                     localStorage.setItem('accessToken', accessToken);
                     localStorage.setItem('userId', userId);
+
+                    console.log('response.headers');
+
+                    onClose();
 
                     alert('로그인에 성공했습니다!');
                 } else {
